@@ -36,11 +36,11 @@ fazer um pull-request e esperar a aprovação do mesmo.
 
 ### A serem desenvolvidas
 
-- [] Cadastro de Usuários (Alunos/Professores)
-- [] Buscar Professores (Alunos)
-- [] Agendar Aulas (Alunos)
-- [] Cancelar Aulas Agendadas (Alunos/Professores)
-- [] Calendário de Aulas (Alunos/Professores)
+- [ ] Cadastro de Usuários (Alunos/Professores)
+- [ ] Buscar Professores (Alunos)
+- [ ] Agendar Aulas (Alunos)
+- [ ] Cancelar Aulas Agendadas (Alunos/Professores)
+- [ ] Calendário de Aulas (Alunos/Professores)
 
 
 ## Alunos 
