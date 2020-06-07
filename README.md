@@ -5,6 +5,6 @@ Projeto desenvolvido (ainda em desenvolvimento...) como requisito para aprovaÃ§Ã
 
 ## Alunos
 
-* **Gustavo Bretas
-* **Gustavo Pereira
-* **Rayane Paiva
+* ** Gustavo Bretas
+* ** Gustavo Pereira
+* ** Rayane Paiva
