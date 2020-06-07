@@ -1,6 +1,10 @@
 # Gestão de Aulas Particulares - NaAula
 
-Projeto desenvolvido (ainda em desenvolvimento...) como requisito para aprovação na disciplina de TI-Aplicações Web da instituição PUC-MG. Vamos trabalhar no desenvolvimento de uma aplicação responsiva usando HTML, CSS e JavaScript.
+Projeto desenvolvido (ainda em desenvolvimento... :grimacing:) como requisito para aprovação na disciplina de TI-Aplicações Web do curso de Ciência da Computação na instituição PUC-MG. Vamos trabalhar no desenvolvimento de uma aplicação responsiva usando HTML, CSS e JavaScript.
+
+## Status do Projeto
+
+> Status: Em desenvolvimento :warning:
 
 ## Desenvolvimento
 
@@ -19,8 +23,14 @@ git checkout novaBranch
 
 (continua...)
 
-## Alunos
+## Funcionalidades
+
+## Alunos 
 
 * Gustavo Bretas
 * Gustavo Pereira
 * Rayane Paiva
+
+## Licença 
+
+Projeto licenciado sob a MIT License - consulte o arquivo LICENSE para mais detalhes.
