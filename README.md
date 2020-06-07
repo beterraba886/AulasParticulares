@@ -34,13 +34,13 @@ fazer um pull-request e esperar a aprovação do mesmo.
 
 ## Alunos 
 
-* Gustavo Bretas - :email: gtbalves@sga.púcminas.br
+* Gustavo Bretas - :email: gtbalves@sga.pucminas.br
 * Gustavo Pereira - :email: gcristofaro@sga.pucminas.br
 * Rayane Paiva - :email: rayanepaiiva@live.com
 
 ## Contribuição
 
-Não estamos aceitando :no/_entry/_sign: contribuições :no/_entry/_sign: de terceiros.
+Não estamos aceitando :no_entry_sign: contribuições :no_entry_sign: de terceiros.
 
 ## Licença 
 
