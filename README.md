@@ -32,6 +32,17 @@ fazer um pull-request e esperar a aprovação do mesmo.
 
 ## Funcionalidades
 
+### Ja desenvolvidas
+
+### A serem desenvolvidas
+
+- [] Cadastro de Usuários (Alunos/Professores)
+- [] Buscar Professores (Alunos)
+- [] Agendar Aulas (Alunos)
+- [] Cancelar Aulas Agendadas (Alunos/Professores)
+- [] Calendário de Aulas (Alunos/Professores)
+
+
 ## Alunos 
 
 * Gustavo Bretas - :email: gtbalves@sga.pucminas.br
