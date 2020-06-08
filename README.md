@@ -6,6 +6,10 @@ Este projeto ainda está em desenvolvimento :grimacing: e, será entregue como r
 
 > Status: Em desenvolvimento :warning:
 
+## Descrição 
+
+(escrever...)
+
 ## Desenvolvimento
 
 Para iniciar o desenvolvimento, é necessário clonar o projeto do GitHub num diretório de sua preferência:
