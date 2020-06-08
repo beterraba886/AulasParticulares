@@ -32,9 +32,9 @@ fazer um pull-request e esperar a aprovação do mesmo.
 
 ## Funcionalidades
 
-### Ja desenvolvidas
+### Desenvolvidas
 
-### A serem desenvolvidas
+### Em deesenvolvimento
 
 - [ ] Cadastro de Usuários (Alunos/Professores)
 - [ ] Buscar Professores (Alunos)
