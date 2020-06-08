@@ -25,7 +25,7 @@ git branch novaBranch
 git checkout novaBranch
 ```
 
-criar seu conteudo nessa branch, enviar para o repositorio remoto:
+criar seu conteúdo nessa branch, enviar para o repositório remoto:
 
 ```shell
 git push origin novaBranch
