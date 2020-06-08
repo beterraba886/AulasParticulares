@@ -51,7 +51,7 @@ fazer um pull-request e esperar a aprovação do mesmo.
 
 ## Contribuição
 
-Não estamos aceitando :no_entry_sign: contribuições :no_entry_sign: de terceiros.
+Por se tratar de um trabalho acadêmico, não aceitamos :no_entry_sign: contribuições :no_entry_sign: de terceiros.
 
 ## Licença 
 
