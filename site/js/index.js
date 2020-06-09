@@ -1,23 +1,16 @@
 $(document).ready()
 {
-
-    console.log("123");
+    
     document.getElementById ('btn_salvar').addEventListener ('click', salvarUsuario);     
-    document.getElementById ('btn_entrar').addEventListener ('click', loginUser);        
-    document.getElementById ('login-form').addEventListener ('submit', processaFormLogin);
-
-
-  
+    document.getElementById ('btn_entrar').addEventListener ('click', processaFormLogin);        
+    //document.getElementById ('login-form').addEventListener ('submit', processaFormLogin);
 
     var db_usuarios = {};
-    
-    // Objeto para o usuário corrente
     var usuarioCorrente = {};
+
 
     // função para gerar códigos randômicos a serem utilizados como código de usuário
     // Fonte: https://stackoverflow.com/questions/105034/how-to-create-guid-uuid
-
-    // gera id pro usuario
     function generateUUID() { // Public Domain/MIT
         var d = new Date().getTime();//Timestamp
         var d2 = (performance && performance.now && (performance.now()*1000)) || 0;//Time in microseconds since page-load or 0 if unsupported
@@ -73,6 +66,31 @@ $(document).ready()
         }
     };
 
+    function salvarUsuario (event) {
+        // Cancela a submissão do formulário para tratar sem fazer refresh da tela
+        event.preventDefault ();
+
+        // Obtem os dados do formulário
+        let login  = document.getElementById('txt_login').value;
+        let nome   = document.getElementById('txt_nome').value;
+        let email  = document.getElementById('txt_email').value;
+        let senha  = document.getElementById('txt_senha').value;
+        let senha2 = document.getElementById('txt_senha2').value;
+        let tipo = document.getElementById('radio_prof').checked; //true é professor
+
+        if (senha != senha2) {
+            alert ('As senhas informadas não conferem.');
+            return
+        }
+
+        // Adiciona o usuário no banco de dados
+        addUser (nome, login, senha, email, tipo);
+        alert ('Usuário salvo com sucesso. Proceda com o login para ');
+
+        // Oculta a div modal do login
+        //document.getElementById ('loginModal').style.display = 'none';
+        $('#loginModal').modal('hide');
+    }
 
     function addUser (nome, login, senha, email, tipo) {
     
@@ -89,33 +107,33 @@ $(document).ready()
     }
 
 
-    function salvarUsuario (event) {
+    function processaFormLogin (event) {                
         // Cancela a submissão do formulário para tratar sem fazer refresh da tela
         event.preventDefault ();
 
-        // Obtem os dados do formulário
-        let login  = document.getElementById('txt_login').value;
-        let nome   = document.getElementById('txt_nome').value;
-        let email  = document.getElementById('txt_email').value;
-        let senha  = document.getElementById('txt_senha').value;
-        let senha2 = document.getElementById('txt_senha2').value;
-        let tipo = document.getElementById('radio_prof').checked; //true é professor
-        console.log(tipo);
-        if (senha != senha2) {
-            alert ('As senhas informadas não conferem.');
-            return
+        // Obtem os dados de login e senha a partir do formulário de login
+        var username = document.getElementById('username').value;
+        var password = document.getElementById('password').value;
+        var tipo     = document.querySelector('select').selectedIndex;
+        if(tipo == 0)
+        {
+            tipo=false;
         }
+        else{
+            tipo=true;
+        }
+        // Valida login e se estiver ok, redireciona para tela inicial da aplicação
+        resultadoLogin = loginUser (username, password, tipo);
+        if (resultadoLogin) {
+            window.location.href = 'home.html';
+        }
+        else { // Se login falhou, avisa ao usuário
+            alert ('Usuário ou senha incorretos');
+        }
+}
 
-        // Adiciona o usuário no banco de dados
-        addUser (nome, login, senha, email, tipo);
-        alert ('Usuário salvo com sucesso. Proceda com o login para ');
-
-        // Oculta a div modal do login
-        //document.getElementById ('loginModal').style.display = 'none';
-        $('#loginModal').modal('hide');
-    }
     // Verifica se o login do usuário está ok e, se positivo, direciona para a página inicial
-    function loginUser (login, senha) {
+    function loginUser (login, senha, tipo) {
         
         // Verifica todos os itens do banco de dados de usuarios 
         // para localizar o usuário informado no formulario de login
@@ -142,25 +160,6 @@ $(document).ready()
         return false;
     }
 
-    function processaFormLogin (event) {                
-        // Cancela a submissão do formulário para tratar sem fazer refresh da tela
-        event.preventDefault ();
-
-        // Obtem os dados de login e senha a partir do formulário de login
-        var username = document.getElementById('username').value;
-        var password = document.getElementById('password').value;
-
-        // Valida login e se estiver ok, redireciona para tela inicial da aplicação
-        resultadoLogin = loginUser (username, password);
-        console.log(resultadoLogin);
-        if (resultadoLogin) {
-            window.location.href = 'home.html';
-        }
-        else { // Se login falhou, avisa ao usuário
-            alert ('Usuário ou senha incorretos');
-        }
-}
-
     // Apaga os dados do usuário corrente no sessionStorage
     function logoutUser () {
         usuarioCorrente = {};
@@ -168,5 +167,4 @@ $(document).ready()
         window.location = LOGIN_URL;
     }
     initLoginApp();
-
 }
