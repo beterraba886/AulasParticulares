@@ -1,8 +1,8 @@
 $(document).ready()
 {
     
-    document.getElementById ('btn_salvar').addEventListener ('click', salvarUsuario);     
-    document.getElementById ('btn_entrar').addEventListener ('click', processaFormLogin);        
+    document.getElementById ('btn_salvar').addEventListener ('click', salvarUsuario());     
+    document.getElementById ('btn_entrar').addEventListener ('click', processaFormLogin());        
     //document.getElementById ('login-form').addEventListener ('submit', processaFormLogin);
 
     var db_usuarios = {};
@@ -34,6 +34,13 @@ $(document).ready()
         ]
     };
     
+    const materiasIniciais = {
+        materias: [// id, discplina, professor, valor
+            { "id": "1", "disciplina": "matematica", "professor": "joao", "valor": "100"},
+            { "id": "2", "disciplina": "quimica", "professor": "raquel", "valor": "120"},
+        ]
+    };
+
     
     // Inicializa o usuarioCorrente e banco de dados de usuários da aplicação de Login
     function initLoginApp () {
@@ -77,6 +84,10 @@ $(document).ready()
         let senha  = document.getElementById('txt_senha').value;
         let senha2 = document.getElementById('txt_senha2').value;
         let tipo = document.getElementById('radio_prof').checked; //true é professor
+        let materias = [
+            { "id": "1", "disciplina": "matematica", "professor": "joao", "valor": "100"},
+            { "id": "2", "disciplina": "quimica", "professor": "raquel", "valor": "120"},
+        ];
 
         if (senha != senha2) {
             alert ('As senhas informadas não conferem.');
@@ -84,7 +95,7 @@ $(document).ready()
         }
 
         // Adiciona o usuário no banco de dados
-        addUser (nome, login, senha, email, tipo);
+        addUser (nome, login, senha, email, tipo, materias);
         alert ('Usuário salvo com sucesso. Proceda com o login para ');
 
         // Oculta a div modal do login
@@ -92,12 +103,12 @@ $(document).ready()
         $('#loginModal').modal('hide');
     }
 
-    function addUser (nome, login, senha, email, tipo) {
+    function addUser (nome, login, senha, email, tipo, materias) {
     
         // Cria um objeto de usuario para o novo usuario 
         let newId = generateUUID ();
         //console.log("teste");
-        let usuario = { "id": newId, "login": login, "senha": senha, "nome": nome, "email": email, "tipo": tipo};
+        let usuario = { "id": newId, "login": login, "senha": senha, "nome": nome, "email": email, "tipo": tipo, "materias": materias};
         
         // Inclui o novo usuario no banco de dados baseado em JSON
         db_usuarios.usuarios.push (usuario);
@@ -110,7 +121,7 @@ $(document).ready()
     function processaFormLogin (event) {                
         // Cancela a submissão do formulário para tratar sem fazer refresh da tela
         event.preventDefault ();
-
+        
         // Obtem os dados de login e senha a partir do formulário de login
         var username = document.getElementById('username').value;
         var password = document.getElementById('password').value;
@@ -147,6 +158,8 @@ $(document).ready()
                 usuarioCorrente.email = usuario.email;
                 usuarioCorrente.nome = usuario.nome;
                 usuarioCorrente.tipo = usuario.tipo;
+                usuarioCorrente.materias = usuario.materias;
+
                 
                 // Salva os dados do usuário corrente no Session Storage, mas antes converte para string
                 sessionStorage.setItem ('usuarioCorrente', JSON.stringify (usuarioCorrente));

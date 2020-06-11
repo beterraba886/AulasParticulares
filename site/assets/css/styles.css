@@ -5,3 +5,8 @@
 .form-control, .forgot {
   color: white;
 }
+
+.form-group input{
+  color:black;
+
+}
