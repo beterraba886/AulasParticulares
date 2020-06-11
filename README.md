@@ -38,7 +38,7 @@ fazer um pull-request e esperar a aprovação do mesmo.
 
 ### Desenvolvidas
 
-### Em deesenvolvimento
+### Em desenvolvimento
 
 - [ ] Cadastro de Usuários (Alunos/Professores)
 - [ ] Buscar Professores (Alunos)
