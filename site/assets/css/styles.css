@@ -5,3 +5,11 @@
 .form-control, .forgot {
   color: white;
 }
+
+.group-radio > .text-info{  
+  padding: 10px;  
+}
+
+.text-info{
+  color: #2980ef;
+}
