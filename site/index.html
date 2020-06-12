@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="author" content="Rayane Paiva Reginaldo">    
+    <meta name="author" content="Rayane Paiva Reginaldo">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>GAP</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
@@ -20,21 +20,28 @@
             <div class="illustration"><i class="icon ion-ios-locked-outline"></i></div>
             <div class="form-group">
                 <select class="bg-dark border rounded form-control form-control-sm" required="" style="color: white;">
-                    <optgroup label="Acesso"><option value="aluno" selected="">Sou Aluno</option>
-                    <option value="professor">Sou Professor</option></optgroup>
+                    <optgroup label="Acesso">
+                        <option value="aluno" selected="">Sou Aluno</option>
+                        <option value="professor">Sou Professor</option>
+                    </optgroup>
                 </select>
-        </div>
-            <div
-                class="form-group"><input class="form-control" type="email" name="email" id="username" placeholder="Email">
             </div>
-    <div class="form-group"><input class="form-control"  type="password" name="password" id="password" placeholder="Senha"></div>
-    <div id="btn_entrar" class="form-group"><button class="btn btn-primary btn-block" type="submit">Entrar</button></div>
-    <a class="forgot" href="#" style="font-size: 16px;padding: 3px;">Esqueceu a Senha?</a>
-        <a class="forgot" href="#" style="font-size: 16px;padding: 3px;" data-toggle="modal" data-target="#loginModal" >Cadastro</a>
-    </form>
+            <div class="form-group"><input class="form-control" type="email" name="email" id="username"
+                    placeholder="Email">
+            </div>
+            <div class="form-group"><input class="form-control" type="password" name="password" id="password"
+                    placeholder="Senha"></div>
+            <div id="btn_entrar" class="form-group"><button class="btn btn-primary btn-block"
+                    type="submit">Entrar</button></div>
+
+            <a class="forgot" href="#" style="font-size: 16px;padding: 3px;">Esqueceu a Senha?</a>
+            <a class="forgot" href="#" style="font-size: 16px;padding: 3px;" data-toggle="modal"
+               data-target="#loginModal">Cadastro</a>
+        </form>
     </div>
 
     <!-- Modal  user{nome, senha, email, tipo(professor ou aluno)} -->
+<<<<<<< HEAD
   <div class="modal fade "  id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -73,22 +80,72 @@
                         <input type="radio" name="radio_tipo" id="radio_aluno" class="form-control" checked="checked">
                         <label for="radio_prof" class="text-info">Professor</label><br>
                         <input type="radio" name="radio_tipo" id="radio_prof" class="form-control">
+=======
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                
+                <div class="modal-header">                    
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    <div id="login-box" class="col-md-12">
+                        <form id="login-form" class="form" method="post" onsubmit="addUser(this)">
+                            <h3 class="text-center text-info">Cadastro</h3>
+                            <div class="form-group">
+                                <label for="login" class="text-info">Usuário</label><br>
+                                <input type="text" name="txt_login" id="txt_login" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="nome" class="text-info">Nome completo</label><br>
+                                <input type="text" name="txt_nome" id="txt_nome" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="email" class="text-info">E-mail</label><br>
+                                <input type="text" name="txt_email" id="txt_email" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="senha" class="text-info">Senha</label><br>
+                                <input type="password" name="txt_senha" id="txt_senha" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="senha2" class="text-info">Confirmação de Senha</label><br>
+                                <input type="password" name="txt_senha2" id="txt_senha2" class="form-control">
+                            </div>
+                            <div class="group-radio">
+                               <input type="radio" name="radio_tipo" id="radio_aluno" checked="checked">
+                               <label for="radio_aluno" class="text-info">Aluno</label><br>
+                               <input type="radio" name="radio_tipo" id="radio_prof" >
+                               <label for="radio_prof" class="text-info">Professor</label>
+                            </div>
+                        </form>
+>>>>>>> 5dec231b71e42fe5cb5b08d37bde161007650cac
                     </div>
-                </form>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" id="btn_salvar" class="btn btn-info">Salvar</button>
+                </div>
             </div>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-          <button type="button" id="btn_salvar" class="btn btn-info">Salvar</button>
-        </div>
-      </div>
     </div>
-  </div>
 
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+<<<<<<< HEAD
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>   
     <script src="/js/login.js"></script>
+=======
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script src="/js/index.js"></script>
+>>>>>>> 5dec231b71e42fe5cb5b08d37bde161007650cac
 
 </body>
 
