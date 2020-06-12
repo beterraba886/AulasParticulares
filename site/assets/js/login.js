@@ -1,9 +1,8 @@
 $(document).ready()
 {
     
-    document.getElementById ('btn_salvar').addEventListener ('click', salvarUsuario());     
-    document.getElementById ('btn_entrar').addEventListener ('click', processaFormLogin());        
-    //document.getElementById ('login-form').addEventListener ('submit', processaFormLogin);
+    document.getElementById ('btn_salvar').addEventListener ('click', salvarUsuario);     
+    document.getElementById ('btn_entrar').addEventListener ('click', processaFormLogin);        
 
     var db_usuarios = {};
     var usuarioCorrente = {};
@@ -75,8 +74,8 @@ $(document).ready()
 
     function salvarUsuario (event) {
         // Cancela a submissão do formulário para tratar sem fazer refresh da tela
-        event.preventDefault ();
 
+        event.preventDefault ();
         // Obtem os dados do formulário
         let login  = document.getElementById('txt_login').value;
         let nome   = document.getElementById('txt_nome').value;
@@ -135,6 +134,7 @@ $(document).ready()
         }
         // Valida login e se estiver ok, redireciona para tela inicial da aplicação
         resultadoLogin = loginUser (username, password, tipo);
+        console.log()
         if (resultadoLogin) {
             window.location.href = 'home.html';
         }
@@ -150,7 +150,9 @@ $(document).ready()
         // para localizar o usuário informado no formulario de login
         for (var i = 0; i < db_usuarios.usuarios.length; i++) {
             var usuario = db_usuarios.usuarios[i];
-            
+            console.log(" login: " + login + " usuario.login: " + usuario.login + 
+            " senha: " + senha + " usuario senha : " + usuario.senha +  
+            " tipo: " + tipo + " usuario tipo: " + usuario.tipo);
             // Se encontrou login, carrega usuário corrente e salva no Session Storage
             if (login == usuario.login && senha == usuario.senha && tipo == usuario.tipo) {
                 usuarioCorrente.id = usuario.id;

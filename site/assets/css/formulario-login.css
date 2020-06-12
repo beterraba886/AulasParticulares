@@ -69,3 +69,6 @@
   transform: translateY(1px);
 }
 
+.modal-body input{
+  color: black;
+}
