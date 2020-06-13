@@ -14,7 +14,7 @@ $(document).ready()
         cardHeader.innerText = materia.id;
 
         let cardBody = document.createElement('div');
-        //cardBody = className ='card-body';
+        cardBody.className ='card-body';
         
         let cardBodyTitulo = document.createElement('h5');
         cardBodyTitulo.className = "card-title";
@@ -37,41 +37,5 @@ $(document).ready()
 
         main.appendChild(card);
     });
-
-
-
-
-
-/*
-    // Verifica se o login do usuário está ok e, se positivo, direciona para a página inicial
-    function loginUser (login, senha, tipo) {
-        
-        // Verifica todos os itens do banco de dados de usuarios 
-        // para localizar o usuário informado no formulario de login
-        for (var i = 0; i < db_usuarios.usuarios.length; i++) {
-            var usuario = db_usuarios.usuarios[i];
-            
-            // Se encontrou login, carrega usuário corrente e salva no Session Storage
-            if (login == usuario.login && senha == usuario.senha && tipo == usuario.tipo) {
-                usuarioCorrente.id = usuario.id;
-                usuarioCorrente.login = usuario.login;
-                usuarioCorrente.email = usuario.email;
-                usuarioCorrente.nome = usuario.nome;
-                usuarioCorrente.tipo = usuario.tipo;
-                
-                // Salva os dados do usuário corrente no Session Storage, mas antes converte para string
-                sessionStorage.setItem ('usuarioCorrente', JSON.stringify (usuarioCorrente));
-
-                // Retorna true para usuário encontrado
-                return true;
-            }
-        }
-
-        // Se chegou até aqui é por que não encontrou o usuário e retorna falso
-        return false;
-    }
-
-*/
-
 
 }
