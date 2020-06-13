@@ -150,9 +150,6 @@ $(document).ready()
         // para localizar o usuário informado no formulario de login
         for (var i = 0; i < db_usuarios.usuarios.length; i++) {
             var usuario = db_usuarios.usuarios[i];
-            console.log(" login: " + login + " usuario.login: " + usuario.login + 
-            " senha: " + senha + " usuario senha : " + usuario.senha +  
-            " tipo: " + tipo + " usuario tipo: " + usuario.tipo);
             // Se encontrou login, carrega usuário corrente e salva no Session Storage
             if (login == usuario.login && senha == usuario.senha && tipo == usuario.tipo) {
                 usuarioCorrente.id = usuario.id;

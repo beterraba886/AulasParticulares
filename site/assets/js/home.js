@@ -1,46 +1,45 @@
 $(document).ready()
 {
-
-    let teste  = localStorage.getItem('db_usuarios');
+    //let teste  = localStorage.getItem('db_usuarios');
     let main = document.querySelector('main');
-    usuarioCorrente = JSON.parse(sessionStorage.getItem('usuarioCorrente'));
-    //console.log(usuarioCorrente);
-    usuarioCorrente.materias.forEach( () => {
+    let usuarioCorrente = JSON.parse(sessionStorage.getItem('usuarioCorrente'));
+
+    //
+    usuarioCorrente.materias.forEach( (materia) => {
         let card = document.createElement('div');
         card.className = 'card text-center';
-
+        
         let cardHeader = document.createElement('div');
         cardHeader.className = 'card-header';
-        cardHeader.innerText = usuarioCorrente.materias.id;
+        cardHeader.innerText = materia.id;
 
         let cardBody = document.createElement('div');
-        cardBody = className ='card-body';
+        //cardBody = className ='card-body';
         
         let cardBodyTitulo = document.createElement('h5');
         cardBodyTitulo.className = "card-title";
-        cardBodyTitulo.innerText = usuarioCorrente.materias.professor;
+        cardBodyTitulo.innerText = materia.professor;
 
         let cardBodyTexto = document.createElement('p');
         cardBodyTexto.className = "card-text";
-        cardBodyTexto.innerText = usuarioCorrente.materias.disciplina;
+        cardBodyTexto.innerText = materia.disciplina;
 
 
         let cardBodyBotao = document.createElement('a');
         cardBodyBotao.className = 'btn btn-primary';
-        cardBodyBotao.innerText = usuarioCorrente.materias.valor;
-
-        console.log('card: ' + typeof(card));
-        console.log('cardHeader: ' + typeof(cardHeader));
-        console.log('cardBody: ' + typeof(cardBody));
+        cardBodyBotao.innerText = materia.valor;
         
-        //cardBody.appendChild(cardBodyTitulo);
-        //cardBody.appendChild(cardBodyTexto);
-        //cardBody.appendChild(cardBodyBotao);
-        //cardHeader.appendChild(cardBody);
-        //card.appendChild(cardHeader);
+        cardBody.appendChild(cardBodyTitulo);
+        cardBody.appendChild(cardBodyTexto);
+        cardBody.appendChild(cardBodyBotao);
+        cardHeader.appendChild(cardBody);
+        card.appendChild(cardHeader);
 
-        //main.appendChild(card);
+        main.appendChild(card);
     });
+
+
+
 
 
 /*
