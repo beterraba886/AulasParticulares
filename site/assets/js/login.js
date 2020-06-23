@@ -30,6 +30,7 @@ $(document).ready()
         usuarios: [
             { "id": generateUUID (), "login": "admin", "senha": "123", "nome": "Administrador do Sistema", "email": "admin@abc.com", "tipo": "true"},
             { "id": generateUUID (), "login": "user", "senha": "123", "nome": "Usuario Comum", "email": "user@abc.com", "tipo": "false"},
+            { "id": generateUUID (), "login": "teste", "senha": "teste", "nome": "Teste", "email": "user@abc.com", "tipo": "false"},
         ]
     };
     
@@ -57,7 +58,7 @@ $(document).ready()
         if (!usuariosJSON) {  // Se NÃO há dados no localStorage
             
             // Informa sobre localStorage vazio e e que serão carregados os dados iniciais
-            alert('Dados de usuários não encontrados no localStorage. \n -----> Fazendo carga inicial.');
+            // alert('Dados de usuários não encontrados no localStorage. \n -----> Fazendo carga inicial.');
     
             // Copia os dados iniciais para o banco de dados 
             db_usuarios = dadosIniciais;
@@ -125,12 +126,13 @@ $(document).ready()
         var username = document.getElementById('username').value;
         var password = document.getElementById('password').value;
         var tipo     = document.querySelector('select').selectedIndex;
+
         if(tipo == 0)
         {
-            tipo=false;
+            tipo="false";
         }
         else{
-            tipo=true;
+            tipo="true";
         }
         // Valida login e se estiver ok, redireciona para tela inicial da aplicação
         resultadoLogin = loginUser (username, password, tipo);
@@ -148,6 +150,7 @@ $(document).ready()
         
         // Verifica todos os itens do banco de dados de usuarios 
         // para localizar o usuário informado no formulario de login
+
         for (var i = 0; i < db_usuarios.usuarios.length; i++) {
             var usuario = db_usuarios.usuarios[i];
             // Se encontrou login, carrega usuário corrente e salva no Session Storage
