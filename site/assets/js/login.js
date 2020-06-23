@@ -83,7 +83,8 @@ $(document).ready()
         let email  = document.getElementById('txt_email').value;
         let senha  = document.getElementById('txt_senha').value;
         let senha2 = document.getElementById('txt_senha2').value;
-        let tipo = document.getElementById('radio_prof').checked; //true é professor
+        let tipo = document.getElementById('radio_prof').checked ? "true" : "false"; //true é professor
+
         let materias = [
             { "id": "1", "disciplina": "matematica", "professor": "joao", "valor": "100"},
             { "id": "2", "disciplina": "quimica", "professor": "raquel", "valor": "120"},
