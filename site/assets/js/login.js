@@ -25,21 +25,25 @@ $(document).ready()
             return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
         });
     }
+    const dataAula = [new Date("2020-06-14"), new Date("2020-06-26"), new Date("2020-06-20")];
+    const dataAula2 = [new Date("2020-06-23"), new Date("2020-06-26"), new Date("2020-06-13")];
+    const materiasIniciais = [// id, discplina, professor, valor
+            { "id": generateUUID(), "disciplina": "matematica", "professor": "joao", "valor": "100", "data": dataAula},
+            { "id": generateUUID(), "disciplina": "quimica", "professor": "raquel", "valor": "120", "data": dataAula2},
+        ];
 
     const dadosIniciais = {
         usuarios: [
             { "id": generateUUID (), "login": "admin", "senha": "123", "nome": "Administrador do Sistema", "email": "admin@abc.com", "tipo": "true"},
             { "id": generateUUID (), "login": "user", "senha": "123", "nome": "Usuario Comum", "email": "user@abc.com", "tipo": "false"},
-            { "id": generateUUID (), "login": "teste", "senha": "teste", "nome": "Teste", "email": "user@abc.com", "tipo": "false"},
+            { "id": generateUUID (), "login": "teste", "senha": "teste", "nome": "Teste", "email": "user@abc.com", "tipo": "false","materias": materiasIniciais},
+            { "id": generateUUID (), "login": "prof", "senha": "prof", "nome": "professor_teste1", "email": "user@abc.com", "tipo": "true","materias": materiasIniciais},
+            { "id": generateUUID (), "login": "prof2", "senha": "123", "nome": "professor_teste2", "email": "user@abc.com", "tipo": "true","materias": materiasIniciais},
+
         ]
     };
     
-    const materiasIniciais = {
-        materias: [// id, discplina, professor, valor
-            { "id": "1", "disciplina": "matematica", "professor": "joao", "valor": "100"},
-            { "id": "2", "disciplina": "quimica", "professor": "raquel", "valor": "120"},
-        ]
-    };
+
 
     
     // Inicializa o usuarioCorrente e banco de dados de usuários da aplicação de Login
@@ -86,8 +90,8 @@ $(document).ready()
         let tipo = document.getElementById('radio_prof').checked ? "true" : "false"; //true é professor
 
         let materias = [
-            { "id": "1", "disciplina": "matematica", "professor": "joao", "valor": "100"},
-            { "id": "2", "disciplina": "quimica", "professor": "raquel", "valor": "120"},
+            { "id": generateUUID(), "disciplina": "matematica", "professor": "joao", "valor": "100"},
+            { "id": generateUUID(), "disciplina": "quimica", "professor": "raquel", "valor": "120"},
         ];
 
         if (senha != senha2) {
@@ -122,7 +126,6 @@ $(document).ready()
     function processaFormLogin (event) {                
         // Cancela a submissão do formulário para tratar sem fazer refresh da tela
         event.preventDefault ();
-        
         // Obtem os dados de login e senha a partir do formulário de login
         var username = document.getElementById('username').value;
         var password = document.getElementById('password').value;
@@ -137,7 +140,6 @@ $(document).ready()
         }
         // Valida login e se estiver ok, redireciona para tela inicial da aplicação
         resultadoLogin = loginUser (username, password, tipo);
-        console.log()
         if (resultadoLogin) {
             window.location.href = 'home.html';
         }
@@ -162,6 +164,7 @@ $(document).ready()
                 usuarioCorrente.nome = usuario.nome;
                 usuarioCorrente.tipo = usuario.tipo;
                 usuarioCorrente.materias = usuario.materias;
+
 
                 
                 // Salva os dados do usuário corrente no Session Storage, mas antes converte para string
