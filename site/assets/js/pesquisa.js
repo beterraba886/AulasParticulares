@@ -6,7 +6,6 @@ $(document).ready()
     let div_pesquisa = document.getElementById('div_pesquisa');
     let professores = [];
     let texto = "";
-    //console.log(Object.keys(usuariosJSON.usuarios).length);
     usuariosJSON.usuarios.forEach((usuario)=>{
         if(usuario.tipo == "true"){
             professores.push(usuario);
