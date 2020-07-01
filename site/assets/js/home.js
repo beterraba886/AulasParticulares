@@ -16,7 +16,7 @@ $(document).ready()
             if(addDays(data_atual, -7) < data_materia &&  data_atual > data_materia){
                 
                 let card = document.createElement('div');
-                card.className = 'card text-center';
+                card.className = 'card text-center';                
           
                 let cardHeader = document.createElement('div');
                 cardHeader.className = 'card-header';
