@@ -1,34 +1,6 @@
 .card {   
         
-    background-color: #ffffff;
-    text-align: center;    
-    border: none;
+    background-color: #ffffff;         
     padding: 10px 10px;
-}
-
-.card .card-header{
-
-    background-color: #00b2f7;    
-    border-radius: 25px;
-    padding: 10px 10px;
-    font-family: Capriola;    
-}
-
-.card .card-header .card-title{
-
-    background-color: #00b2f7;
-    font-family: Capriola;
-}
-
-
-.card .card-header .card-text{
-
-    font-family: Capriola;
-}
-
-.card .card-header .btn {
-
-    background-color: #000000;
-    border-color: #000000;
-    font-family: Capriola;
+    border-radius: 15px;
 }
