@@ -15,28 +15,28 @@ $(document).ready()
             data_materia = new Date(data_materia);
             if(addDays(data_atual, -7) < data_materia &&  data_atual > data_materia){
                 
-                let card = document.createElement('div');
-                card.className = 'd-flex justify-content-center';                
-                card.style.backgroundColor = '#ffffff';
-                card.style.padding = '10px 10px';
+                let cardDFlex = document.createElement('div');
+                cardDFlex.className = 'd-flex justify-content-center';                
+                cardDFlex.style.backgroundColor = '#ffffff';
+                cardDFlex.style.padding = '10px 10px';
 
-                let cardBox1 = document.createElement('div');
-                cardBox1.className = 'card';
+                let card = document.createElement('div');
+                card.className = 'card';
 
                 let cardBody = document.createElement('div');
                 cardBody.className = 'card-body';
 
-                let headerTitle = document.createElement('h4');
-                headerTitle.className = 'card-title';
-                headerTitle.innerText = materia.id;
+                let cardTitle = document.createElement('h4');
+                cardTitle.className = 'card-title';
+                cardTitle.innerText = materia.id;
 
-                let headerSubTitle1 = document.createElement('h6');
-                headerSubTitle1.className = 'text-muted card-subtitle mb-2';
+                let textMuted1 = document.createElement('h6');
+                textMuted1.className = 'text-muted card-subtitle mb-2';
 
-                let headerSubTitle2 = document.createElement('h6');
-                headerSubTitle2.className = 'text-muted card-subtitle mb-2';
+                let textMuted2 = document.createElement('h6');
+                textMuted2.className = 'text-muted card-subtitle mb-2';
                 
-                let paragraph = document.createElement('p');
+                let cardText = document.createElement('p');
                 paragraph.className = 'card-text';
                 paragraph.innerText = 'Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.';
 
@@ -44,18 +44,20 @@ $(document).ready()
                 button.className = 'btn btn-primary';
                 button.type = 'button';                
         
-                cardBody.appendChild(headerTitle);
-                cardBody.appendChild(headerSubTitle1);
-                cardBody.appendChild(headerSubTitle2);
+                cardBody.appendChild(cardTitle);
+                cardBody.appendChild(textMuted1);
+                cardBody.appendChild(textMuted2);
+                cardBody.appendChild(cardText);
+                cardBody.appendChild(button);
 
-                cardBox1.appendChild(cardBody);                
+                card.appendChild(cardBody);                
 
-                card.appendChild(cardBox1);
+                cardDFlex.appendChild(card);                
         
-                main.appendChild(card);
+                main.appendChild(cardDFlex);
             }
         });
-        
+
         /*
         let card = document.createElement('div');
         card.className = 'card text-center';
