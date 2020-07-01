@@ -31,15 +31,17 @@ $(document).ready()
                 let cardTitle = document.createElement('h4');
                 cardTitle.className = 'card-title';
                 cardTitle.style.fontFamily = 'Capriola, sans-serif';
-                cardTitle.innerText = materia.id;
+                cardTitle.innerText = 'Matemática';
 
                 let textMuted1 = document.createElement('h6');
                 textMuted1.className = 'text-muted card-subtitle mb-2';
-                textMuted1.style.fontFamily = 'Capriola, sans-serif';                
+                textMuted1.style.fontFamily = 'Capriola, sans-serif'; 
+                textMuted1.innerText = 'Professor João';
 
                 let textMuted2 = document.createElement('h6');                
                 textMuted2.className = 'text-muted card-subtitle mb-2';
                 textMuted2.style.fontFamily = 'Capriola, sans-serif';
+                textMuted2.innerText = 'Dia: 00/00/2020 - Hora: 00:00';
                 
                 let cardText = document.createElement('p');
                 cardText.className = 'card-text';
@@ -48,7 +50,9 @@ $(document).ready()
 
                 let button = document.createElement('button');
                 button.className = 'btn btn-primary';
-                button.type = 'button';                
+                cardText.style.fontFamily = 'Capriola, sans-serif';
+                button.type = 'button';
+                button.innerText = 'Cancelar Agendamento';
         
                 cardBody.appendChild(cardTitle);
                 cardBody.appendChild(textMuted1);
