@@ -17,6 +17,7 @@ $(document).ready()
                 
                 let card = document.createElement('div');
                 card.className = 'card text-center';
+                card.style.backgroundColor = '#ffffff';
           
                 let cardHeader = document.createElement('div');
                 cardHeader.className = 'card-header';
