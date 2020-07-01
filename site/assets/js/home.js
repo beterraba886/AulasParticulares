@@ -12,8 +12,10 @@ $(document).ready()
     usuarioCorrente.materias.forEach( (materia) => {
 
         materia.data.forEach( (data_materia) =>{
+
             data_materia = new Date(data_materia);
-            if(addDays(data_atual, -7) < data_materia &&  data_atual > data_materia){
+
+            if((addDays(data_atual, -7) < data_materia) && (data_atual > data_materia)){
                 
                 let cardDFlex = document.createElement('div');
                 cardDFlex.className = 'd-flex justify-content-center';                
@@ -28,17 +30,21 @@ $(document).ready()
 
                 let cardTitle = document.createElement('h4');
                 cardTitle.className = 'card-title';
+                cardTitle.style.fontFamily = 'Capriola, sans-serif';
                 cardTitle.innerText = materia.id;
 
                 let textMuted1 = document.createElement('h6');
                 textMuted1.className = 'text-muted card-subtitle mb-2';
+                textMuted1.style.fontFamily = 'Capriola, sans-serif';                
 
-                let textMuted2 = document.createElement('h6');
+                let textMuted2 = document.createElement('h6');                
                 textMuted2.className = 'text-muted card-subtitle mb-2';
+                textMuted2.style.fontFamily = 'Capriola, sans-serif';
                 
                 let cardText = document.createElement('p');
-                paragraph.className = 'card-text';
-                paragraph.innerText = 'Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.';
+                cardText.className = 'card-text';
+                cardText.style.fontFamily = 'Capriola, sans-serif';
+                cardText.innerText = 'Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.';
 
                 let button = document.createElement('button');
                 button.className = 'btn btn-primary';
@@ -56,7 +62,9 @@ $(document).ready()
         
                 main.appendChild(cardDFlex);
             }
+
         });
+
 
         /*
         let card = document.createElement('div');
@@ -77,12 +85,10 @@ $(document).ready()
         cardBodyTexto.className = "card-text";
         cardBodyTexto.innerText = materia.disciplina;
 
-
         let cardBodyBotao = document.createElement('a');
         cardBodyBotao.className = 'btn btn-primary';
         cardBodyBotao.innerText = materia.valor;
-        cardBodyBotao.href = `materia.html?materia_id=${materia.id}`;
-        
+        cardBodyBotao.href = `materia.html?materia_id=${materia.id}`;        
 
         cardBody.appendChild(cardBodyTitulo);
         cardBody.appendChild(cardBodyTexto);
