@@ -2,10 +2,22 @@ $(document).ready()
 {
     
     document.getElementById ('btn_salvar').addEventListener ('click', salvarUsuario);     
-    document.getElementById ('btn_entrar').addEventListener ('click', processaFormLogin);        
+    document.getElementById ('btn_entrar').addEventListener ('click', processaFormLogin);
+    document.getElementById ('radio_aluno').addEventListener('click', desabilitaInput);
+    document.getElementById ('radio_prof').addEventListener('click', habilitaInput);
 
     var db_usuarios = {};
     var usuarioCorrente = {};
+
+    function desabilitaInput(){
+        document.getElementById ('txt_disciplina').disabled = true;
+        document.getElementById ('txt_valor').disabled = true;
+    }
+
+    function habilitaInput(){        
+        document.getElementById ('txt_disciplina').disabled = false;        
+        document.getElementById ('txt_valor').disabled = false;
+    }
 
 
     // função para gerar códigos randômicos a serem utilizados como código de usuário
@@ -25,6 +37,7 @@ $(document).ready()
             return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
         });
     }
+    
     const dataAula = [new Date("2020-07-04"), new Date("2020-07-11"), new Date("2020-07-20")];
     const dataAula2 = [new Date("2020-07-04"), new Date("2020-07-12"), new Date("2020-07-14")];
     const materiasIniciais = [// id, discplina, professor, valor
@@ -79,9 +92,10 @@ $(document).ready()
     };
 
     function salvarUsuario (event) {
-        // Cancela a submissão do formulário para tratar sem fazer refresh da tela
 
+        // Cancela a submissão do formulário para tratar sem fazer refresh da tela
         event.preventDefault ();
+
         // Obtem os dados do formulário
         let login  = document.getElementById('txt_login').value;
         let nome   = document.getElementById('txt_nome').value;
@@ -113,6 +127,7 @@ $(document).ready()
     
         // Cria um objeto de usuario para o novo usuario 
         let newId = generateUUID ();
+
         //console.log("teste");
         let usuario = { "id": newId, "login": login, "senha": senha, "nome": nome, "email": email, "tipo": tipo, "materias": materias};
         
@@ -124,27 +139,28 @@ $(document).ready()
     }
 
 
-    function processaFormLogin (event) {                
+    function processaFormLogin (event) {       
+
         // Cancela a submissão do formulário para tratar sem fazer refresh da tela
         event.preventDefault ();
+
         // Obtem os dados de login e senha a partir do formulário de login
         var username = document.getElementById('username').value;
         var password = document.getElementById('password').value;
         var tipo     = document.querySelector('select').selectedIndex;
 
-        if(tipo == 0)
-        {
+        if(tipo == 0){
             tipo="false";
-        }
-        else{
+        } else {
             tipo="true";
         }
+
         // Valida login e se estiver ok, redireciona para tela inicial da aplicação
         resultadoLogin = loginUser (username, password, tipo);
+
         if (resultadoLogin) {
             window.location.href = 'home.html';
-        }
-        else { // Se login falhou, avisa ao usuário
+        } else { // Se login falhou, avisa ao usuário
             alert ('Usuário ou senha incorretos');
         }
 }
@@ -159,14 +175,13 @@ $(document).ready()
             var usuario = db_usuarios.usuarios[i];
             // Se encontrou login, carrega usuário corrente e salva no Session Storage
             if (login == usuario.login && senha == usuario.senha && tipo == usuario.tipo) {
+
                 usuarioCorrente.id = usuario.id;
                 usuarioCorrente.login = usuario.login;
                 usuarioCorrente.email = usuario.email;
                 usuarioCorrente.nome = usuario.nome;
                 usuarioCorrente.tipo = usuario.tipo;
                 usuarioCorrente.materias = usuario.materias;
-
-
                 
                 // Salva os dados do usuário corrente no Session Storage, mas antes converte para string
                 sessionStorage.setItem ('usuarioCorrente', JSON.stringify (usuarioCorrente));
@@ -182,9 +197,11 @@ $(document).ready()
 
     // Apaga os dados do usuário corrente no sessionStorage
     function logoutUser () {
+
         usuarioCorrente = {};
         sessionStorage.setItem ('usuarioCorrente', JSON.stringify (usuarioCorrente));
         window.location = LOGIN_URL;
     }
+
     initLoginApp();
 }
