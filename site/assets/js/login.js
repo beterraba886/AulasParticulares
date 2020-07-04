@@ -25,8 +25,8 @@ $(document).ready()
             return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
         });
     }
-    const dataAula = [new Date("2020-06-14"), new Date("2020-06-26"), new Date("2020-06-20")];
-    const dataAula2 = [new Date("2020-06-23"), new Date("2020-06-26"), new Date("2020-06-13")];
+    const dataAula = [new Date("2020-07-04"), new Date("2020-07-11"), new Date("2020-07-20")];
+    const dataAula2 = [new Date("2020-07-04"), new Date("2020-07-12"), new Date("2020-07-14")];
     const materiasIniciais = [// id, discplina, professor, valor
             { "id": generateUUID(), "disciplina": "matematica", "professor": "joao", "valor": "100", "data": dataAula},
             { "id": generateUUID(), "disciplina": "quimica", "professor": "raquel", "valor": "120", "data": dataAula2},
@@ -34,6 +34,7 @@ $(document).ready()
 
     const dadosIniciais = {
         usuarios: [
+            
             { "id": generateUUID (), "login": "admin", "senha": "123", "nome": "Administrador do Sistema", "email": "admin@abc.com", "tipo": "true"},
             { "id": generateUUID (), "login": "user", "senha": "123", "nome": "Usuario Comum", "email": "user@abc.com", "tipo": "false"},
             { "id": generateUUID (), "login": "teste", "senha": "teste", "nome": "Teste", "email": "user@abc.com", "tipo": "false","materias": materiasIniciais},
