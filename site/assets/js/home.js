@@ -60,6 +60,7 @@ $(document).ready()
                 button.className = 'btn btn-primary';
                 button.id = 'btn_cancelar';
                 button.style.fontFamily = 'Capriola, sans-serif';
+                button.style.margin = '8px';
                 button.type = 'button';
                 button.innerText = 'Cancelar Agendamento';
 
@@ -67,7 +68,7 @@ $(document).ready()
                 button2.className = 'btn btn-primary';
                 button2.id = 'btn_adiar';
                 button2.style.fontFamily = 'Capriola, sans-serif';
-                button2.style.marginLeft = '10px';
+                button2.style.margin = '8px';
                 button2.type = 'button';
                 button2.innerText = 'Adiar';
         
