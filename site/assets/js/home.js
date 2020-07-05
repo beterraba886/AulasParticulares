@@ -12,11 +12,10 @@ $(document).ready()
     usuarioCorrente.materias.forEach( (materia) => {
 
         materia.data.forEach( (data_materia) =>{
-
             data_materia = new Date(data_materia);
-
+            console.log(data_materia);
             if((addDays(data_atual, -7) < data_materia) && (data_atual > data_materia)){
-                
+                console.log('teste');
                 let cardDFlex = document.createElement('div');
                 cardDFlex.className = 'd-flex justify-content-center';                
                 cardDFlex.style.backgroundColor = '#ffffff';
@@ -31,12 +30,12 @@ $(document).ready()
                 let cardTitle = document.createElement('h4');
                 cardTitle.className = 'card-title';
                 cardTitle.style.fontFamily = 'Capriola, sans-serif';
-                cardTitle.innerText = 'Matemática';
+                cardTitle.innerText = materia.disciplina;//'Matemática';
 
                 let textMuted1 = document.createElement('h6');
                 textMuted1.className = 'text-muted card-subtitle mb-2';
                 textMuted1.style.fontFamily = 'Capriola, sans-serif'; 
-                textMuted1.innerText = 'Professor João';
+                textMuted1.innerText = materia.professor//'Professor João';
 
                 let textMuted2 = document.createElement('h6');                
                 textMuted2.className = 'text-muted card-subtitle mb-2';
@@ -62,7 +61,7 @@ $(document).ready()
 
                 card.appendChild(cardBody);                
 
-                cardDFlex.appendChild(card);                
+                cardDFlex.appendChild(card);               
         
                 main.appendChild(cardDFlex);
             }
