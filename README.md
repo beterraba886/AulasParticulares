@@ -6,9 +6,9 @@ Este projeto ainda está em desenvolvimento :grimacing: e, será entregue como r
 
 > Status: Em desenvolvimento :warning:
 
-## Descrição 
+## Acesso
 
-(escrever...)
+A aplicação esta disponível no link de acesso: https://beterraba886.github.io/AulasParticulares/site/
 
 ## Desenvolvimento
 
@@ -38,14 +38,16 @@ fazer um pull-request e esperar a aprovação do mesmo.
 
 ### Desenvolvidas
 
+- [X] Cadastro de Usuários Alunos
+- [X] Cadastro de Usuários Professores
+- [X] Buscar Professores (Funcionalidade para o usuário aluno)
+- [X] Atualizar Dados do Perfil de Usuário (Funcionalidade para o usuario aluno e professor)
+- [X] Visualizar Aulas Agendadas (Funcionalidade para o usuário aluno e professor)
+
 ### Em desenvolvimento
 
-- [ ] Cadastro de Usuários (Alunos/Professores)
-- [ ] Buscar Professores (Alunos)
-- [ ] Agendar Aulas (Alunos)
-- [ ] Cancelar Aulas Agendadas (Alunos/Professores)
-- [ ] Calendário de Aulas (Alunos/Professores)
-
+- [ ] Agendar Aulas (Funcionalidade para o usuário aluno)
+- [ ] Cancelar Aulas Agendadas (Funcionalidade para o usuśrio aluno e professor)
 
 ## Alunos 
 
