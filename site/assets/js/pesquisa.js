@@ -7,12 +7,10 @@ $(document).ready()
     let professores = [];
     let texto = "";
     usuariosJSON.usuarios.forEach((usuario)=>{
-        if(usuario.tipo == "true"){
+        if(usuario.tipo == true){
             professores.push(usuario);
         }
     });
-
-    console.log(professores);
 
     //filtrar
 
