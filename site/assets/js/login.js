@@ -75,8 +75,8 @@ $(document).ready()
                 "username" : "aluno", 
                 "nome" : "Aluno da Silva", 
                 "email" : "aluno-da-silva@email.com", 
-                "disciplina" : "" , 
-                "valor" : "", 
+                "disciplina" : "Matemática", 
+                "valor" : "100", 
                 "link" : "", 
                 "senha" : "aluno",
 
