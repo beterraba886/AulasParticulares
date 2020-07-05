@@ -7,42 +7,48 @@ $(document).ready()
 
     document.getElementById('btn_atualizar').addEventListener('click', atualizar_dados);       
 
-    function carregar_dados_usuario() {
+    function carregar_dados_usuario() {        
 
-        //ifelse proff/aluno
+        if(usuarioLogado.tipo == false){
 
-        let inputUsername = document.getElementById('user');
-        let inputName = document.getElementById('name');
-        let inputEmail = document.getElementById('email');
-        let inputDisciplina = document.getElementById('disciplina');
-        //let inputValor = document.getElementById('valor');
-        //let inputDescricao = document.getElementById('descricao');
+            document.getElementById ('disciplina').hidden = true;
+            document.getElementById ('valor').hidden = true;
+            document.getElementById ('link').hidden = true;
 
+            let inputUsername = document.getElementById('user');
+            let inputName = document.getElementById('name');
+            let inputEmail = document.getElementById('email');
+    
+            inputUsername.value = usuarioLogado.username;
+            inputName.value = usuarioLogado.nome;
+            inputEmail.value = usuarioLogado.email;
 
-        inputUsername.value = usuarioLogado.login;
-        inputName.value = usuarioLogado.nome;
-        inputEmail.value = usuarioLogado.email;
-        inputDisciplina.value = usuarioLogado.id;
-        //inputUsername.value = usuarioLogado;
-        //inputUsername.value = usuarioLogado;
+        } else {
+
+            document.getElementById ('disciplina').hidden = false;
+            document.getElementById ('valor').hidden = false;
+            document.getElementById ('link').hidden = false;
+
+            let inputUsername = document.getElementById('user');
+            let inputName = document.getElementById('name');
+            let inputEmail = document.getElementById('email');
+            let inputDisciplina = document.getElementById('disciplina');
+            let inputValor = document.getElementById('valor');
+            let inputLink = document.getElementById('link');
+    
+            inputUsername.value = usuarioLogado.username;
+            inputName.value = usuarioLogado.nome;
+            inputEmail.value = usuarioLogado.email;
+            inputDisciplina.value = usuarioLogado.disciplina;
+            inputValor.value = usuarioLogado.valor;
+            inputLink.value = usuarioLogado.link;
+
+        }
+
     }
 
 
     function atualizar_dados() {
-
-        /** FAZER DEPOIS DE MUDAR A ESTRUTURA DO JSON
-         
-            if proff
-                
-                buscar professor no db_professores pelo id do usuarioCorrente
-                substituir os dados cadastrados pelos dados no input
-
-            esle
-
-                buscar aluno no db_alunos pelo id do usuarioCorrente
-                substituir os dados cadastrados pelos dados no input        
-
-        */
 
         let new_db_usuarios = JSON.parse(localStorage.getItem('db_usuarios'));
         let find = false;
@@ -52,14 +58,19 @@ $(document).ready()
 
             if (usuarioLogado.id == new_db_usuarios.usuarios[i].id) {
 
-                new_db_usuarios.usuarios[i].login = document.getElementById('user').value;
+                new_db_usuarios.usuarios[i].username = document.getElementById('user').value;
                 new_db_usuarios.usuarios[i].nome = document.getElementById('name').value;
                 new_db_usuarios.usuarios[i].email = document.getElementById('email').value;
-                //new_db_usuarios.usuarios[i].disciplina = "";
+                new_db_usuarios.usuarios[i].disciplina = document.getElementById('disciplina').value;
+                new_db_usuarios.usuarios[i].valor = document.getElementById('valor').value;
+                new_db_usuarios.usuarios[i].link = document.getElementById('link').value;                
 
-                usuarioLogado.login = document.getElementById('user').value;
+                usuarioLogado.username = document.getElementById('user').value;
                 usuarioLogado.nome = document.getElementById('name').value;
                 usuarioLogado.email = document.getElementById('email').value;
+                usuarioLogado.disciplina = document.getElementById('disciplina').value;
+                usuarioLogado.valor = document.getElementById('valor').value;
+                usuarioLogado.link = document.getElementById('link').value;                
 
                 find = true;
             }
@@ -68,8 +79,11 @@ $(document).ready()
         sessionStorage.setItem('usuarioCorrente', JSON.stringify (usuarioLogado));
         localStorage.setItem('db_usuarios', JSON.stringify (new_db_usuarios));
 
-        //alerta de cadastro ok ou nao
-        //alert();
+        if(find){
+            alert('Dados atualizados com sucesso!');
+        } else{
+            alert('Os dados não foram atualizados!');
+        }        
         
         document.location.reload(true);
     }
