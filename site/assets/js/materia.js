@@ -124,7 +124,7 @@ $(document).on('click','#btn_marcar',function(){
     function materiaExiste(usuarioCorrente){
         let existe = false;
         for(i=0;i<usuarioCorrente.aulas_agendadas.length; i++)
-        if(usuarioCorrente.aulas_agendadas[i].id_professor = professor_ID ){
+        if(usuarioCorrente.aulas_agendadas[i].id_professor = professor.id_usuario ){
             existe = true
 
         }

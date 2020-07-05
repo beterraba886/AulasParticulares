@@ -15,11 +15,12 @@ $(document).ready()
     //filtrar
 
     function pesquisar() {
-        let input = document.getElementById('input');
+        let input = document.getElementById('txt_disciplina');
         let valor = input.value;
+        console.log(valor);
         texto = "";
         professores.forEach((professor)=>{
-            if(professor.nome.includes(valor)){
+            if(professor.disciplina.includes(valor)){
                 texto = texto + `
                 <div class="d-flex justify-content-center" style="width: 100%;padding: 20px;"><img class="rounded img-fluid" style="width: 120px;height: 140px;" src="assets/img/pexels-photo-2100063.jpeg">
                     <div style="padding: 0px 15px;">
