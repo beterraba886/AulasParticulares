@@ -37,7 +37,7 @@ $(document).ready()
             return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
         });
     }
-    const dataAula = [new Date("2020-06-30"), new Date("2020-07-01"), new Date("2020-07-01")];
+    const dataAula = [new Date("2020-06-15"), new Date("2020-06-01"), new Date("2020-07-09")];
     const dataAula2 = [new Date("2020-06-23"), new Date("2020-07-03"), new Date("2020-06-13")];
     const materiasIniciais = [// id, discplina, professor, valor
             { "id": generateUUID(), "disciplina": "matematica", "professor": "joao", "valor": "100", "data": dataAula},
@@ -54,7 +54,7 @@ $(document).ready()
             //{ "id": generateUUID (), "login": "teste", "senha": "teste", "nome": "Teste", "email": "user@abc.com", "tipo": "false","materias": materiasIniciais},
             //{ "id": generateUUID (), "login": "prof", "senha": "prof", "nome": "professor_teste1", "email": "user@abc.com", "tipo": "true","materias": materiasIniciais},
             //{ "id": generateUUID (), "login": "prof2", "senha": "123", "nome": "professor_teste2", "email": "user@abc.com", "tipo": "true","materias": materiasIniciais},
-
+            
             {
                 "id_usuario" : generateUUID(), 
                 "tipo" : false, 
@@ -67,7 +67,6 @@ $(document).ready()
                 "senha" : "aluno",
 
                 "aulas_agendadas": [
-
                     {   
                         // id_aula necessario para excluir aula do usuario proff e do usuario aluno
                         "id_aula" : "", 
@@ -76,17 +75,7 @@ $(document).ready()
                         "nome_professor" : "",
                         "data_aula" : dataAula,
                         "hora_aula" : "",
-                    },
-                    
-                    {   
-                        // id_aula necessario para excluir aula do usuario proff e do usuario aluno
-                        "id_aula" : "", 
-                        "id_aluno" : "",
-                        "id_professor" : "",                        
-                        "nome_professor" : "",
-                        "data_aula" : dataAula,
-                        "hora_aula" : "",
-                    },
+                    }
                 ]
             },
 
@@ -110,17 +99,7 @@ $(document).ready()
                         "nome_aluno" : "",
                         "data_aula" : "",
                         "hora_aula" : "",
-                    },
-
-                    {   
-                        // id_aula necessario para excluir aula do usuario proff e do usuario aluno
-                        "id_aula" : "", 
-                        "id_aluno" : "",
-                        "id_professor" : "",                        
-                        "nome_professor" : "",
-                        "data_aula" : dataAula,
-                        "hora_aula" : "",
-                    },
+                    }
                 ]
             }
 
@@ -279,7 +258,7 @@ $(document).ready()
             // Se encontrou login, carrega usuário corrente e salva no Session Storage
             if (username == usuario.username && senha == usuario.senha && tipo == usuario.tipo) {
 
-                usuarioCorrente.id_usuario = usuario.id;
+                usuarioCorrente.id_usuario = usuario.id_usuario;
                 usuarioCorrente.tipo = usuario.tipo;
                 usuarioCorrente.username = usuario.username;
                 usuarioCorrente.nome = usuario.nome;
