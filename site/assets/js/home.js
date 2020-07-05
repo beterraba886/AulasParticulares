@@ -1,21 +1,22 @@
 $(document).ready()
 {
-    //let teste  = localStorage.getItem('db_usuarios');
+     
+    
     let main = document.querySelector('main');
 
     let usuarioCorrente = JSON.parse(sessionStorage.getItem('usuarioCorrente'));
 
-    let logout = document.querySelector('#logout').addEventListener('click', logoutUser);
+    window.onload = hideSearch();
 
+    let logout = document.querySelector('#logout').addEventListener('click', logoutUser);
+ 
     let data_atual = new Date();
 
     usuarioCorrente.aulas_agendadas.forEach( (materia) => {        
 
         materia.data_aula.forEach( (data_materia) =>{
 
-            data_materia = new Date(data_materia);
-
-            //console.log(data_materia);
+            data_materia = new Date(data_materia);            
             
             if((addDays(data_atual, -7) < data_materia) && (data_atual > data_materia)){
 
@@ -103,4 +104,18 @@ $(document).ready()
         result.setDate(result.getDate() + days);
         return result;
     }
+
+    /**
+     * Esconde a opção de pesquisar na barra de navegação 
+     * caso o usuario logado seja um professor.
+     */
+    function hideSearch(){
+
+        if(usuarioCorrente.tipo){
+            document.getElementById ('nav_pesquisar').hidden = true;
+        } else {
+            document.getElementById ('nav_pesquisar').hidden = false;
+        }
+    }
+
 }

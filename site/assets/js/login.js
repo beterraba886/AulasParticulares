@@ -256,14 +256,14 @@ $(document).ready()
 
         if (resultadoLogin) {
 
-            window.location.href = 'home.html';
+            window.location.href = 'home.html';            
 
         } else { 
 
             alert ('Usuário, senha ou/e tipo de acesso incorretos');
 
         }
-}
+    }
 
     /**
      * Verifica se o login do usuário está ok e, se positivo, direciona para a página inicial.
@@ -277,7 +277,7 @@ $(document).ready()
 
             var usuario = db_usuarios.usuarios[i];
             
-            if (username == usuario.username && senha == usuario.senha && tipo == usuario.tipo) {
+            if (username == usuario.username && senha == usuario.senha && tipo == usuario.tipo) {                
 
                 usuarioCorrente.id_usuario = usuario.id;
                 usuarioCorrente.tipo = usuario.tipo;
@@ -290,7 +290,7 @@ $(document).ready()
                 usuarioCorrente.senha = usuario.senha;
                 usuarioCorrente.aulas_agendadas = usuario.aulas_agendadas;                                
                 
-                sessionStorage.setItem ('usuarioCorrente', JSON.stringify (usuarioCorrente));
+                sessionStorage.setItem ('usuarioCorrente', JSON.stringify (usuarioCorrente));                
                 
                 return true;
             }
@@ -310,5 +310,5 @@ $(document).ready()
         window.location = LOGIN_URL;
     }
 
-    initLoginApp();
+    initLoginApp();    
 }

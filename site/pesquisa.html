@@ -20,10 +20,25 @@
     <main class="d-xl-flex justify-content-center align-content-center align-self-center justify-content-xl-center align-items-xl-center"
         style="width: 100%;height: 100%;">
         
-        <div>
-            <div class="d-flex d-xl-flex justify-content-center justify-content-xl-center" style="padding: 50px;width: 100%;">
-                <input id="input" class="border rounded border-dark d-flex bounce animated" type="search" style="font-family: Capriola, sans-serif;font-size: 15px;" autocomplete="on" placeholder="Matemática">
-                <button id="btn_pesquisa" class="btn btn-primary text-center bounce animated" type="button" style="margin-left: 8px; font-family: Capriola, sans-serif" autofocus>Pesquisar</button>
+        <div style="font-family: Capriola, sans-serif;">
+            <div class="d-flex d-xl-flex justify-content-center justify-content-xl-center" style="padding: 50px; width: 100%;;">
+                <div class="form-group"  id="disciplina">                    
+                    <select class="form-control-lg" id="txt_disciplina" required="" style="background-color: rgb(255, 255, 255); color: #000000;">                                    
+                        <optgroup label="Disciplina">
+                            <option value="Português" selected="">Português</option>
+                            <option value="Matemática">Matemática</option>
+                            <option value="Geografia">Geografia</option>
+                            <option value="História">História</option>
+                            <option value="Literatura">Literatura</option>
+                            <option value="Inglês">Inglês</option>
+                            <option value="Espanhol">Espanhol</option>
+                            <option value="Física">Física</option>
+                            <option value="Química">Química</option>
+                            <option value="Redação">Redação</option>
+                        </optgroup>
+                    </select>
+                </div>
+                <button id="btn_pesquisa" class="btn btn-primary btn-lg text-center form-group" type="button" style="margin-left: 8px; font-family: Capriola, sans-serif" autofocus>Pesquisar</button>
             </div>
 
             <div id="div_pesquisa">
@@ -39,9 +54,14 @@
     <br>    
 
     <nav class="navbar navbar-light navbar-expand-md fixed-bottom" style="background-color: #f77c00;">
-        <div class="container-fluid"><a class="navbar-brand"  href="home.html" style="font-family: Capriola, sans-serif;">NaAula</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-            <div
-                class="collapse navbar-collapse" id="navcol-1">
+        <div class="container-fluid">
+            <a class="navbar-brand"  href="home.html" style="font-family: Capriola, sans-serif;">NaAula</a>
+            
+            <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1">
+                <span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="nav navbar-nav">
                     <li class="nav-item" role="presentation"><a class="nav-link active"  href="pesquisa.html" style="font-family: Capriola, sans-serif;">Pesquisar</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="#" style="font-family: Capriola, sans-serif;">Chat</a></li>
