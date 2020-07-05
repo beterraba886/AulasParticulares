@@ -6,7 +6,7 @@ $(document).ready()
     var professor;
     var url_string = window.location.href;
     var url = new URL(url_string);
-    var professor_ID = url.searchParams.get("prof_id");
+    let professor_ID = url.searchParams.get("prof_id");
     let conteudo_pagina = "";
 
     //criando data minima
@@ -14,12 +14,11 @@ $(document).ready()
     addDays(data_hoje, 1);
     data_hoje = data_hoje.toISOString().slice(0,10);
 
-    console.log(data_hoje);
 
     for(i=0;i<usuariosJSON.usuarios.length && professor_ID != usuariosJSON.usuarios[i].id; i++){
         professor = usuariosJSON.usuarios[i];
     };
-    console.log(professor);
+
     conteudo_pagina = `
     
     <div class="d-flex justify-content-center" style="background-color: #ffffff;">
@@ -52,7 +51,8 @@ $(document).ready()
                 <h3 class="text-center" style="font-family: Capriola, sans-serif;">Value of Lessons</h3>
                 <p class="text-center" style="font-family: Capriola, sans-serif;">${professor.valor}</p>
                 <button id="btn_marcar" class="btn btn-primary" type="button" style="font-family: Capriola, sans-serif;">Schedule Lesson</button>
-                <input type="date" min="${data_hoje}" id="data_marcada">    
+                <input type="date" min="${data_hoje}" id="data_marcada">
+                <input type="time" id="hora_marcada" min="09:00" max="22:00" pattern="([01]?[0-9]|2[0-3]):[0-5][0-9]" required>   
             </div>
         
         </div>
@@ -64,33 +64,50 @@ $(document).ready()
 main.innerHTML = conteudo_pagina;
 
 marcarAula = function(professor){
-    console.log(professor);
-    let i=0;
+    let i=0, j=0;
     let data_materia = document.querySelector('#data_marcada').value;
+    let hora_materia = document.querySelector('#hora_marcada').value;
+    console.log(hora_materia);
+    data_materia = new Date(data_materia);
     let id_aula = generateUUID();
+    //acha posição do aulas agendadas no usuario corrente
+    while(usuarioCorrente.id != usuariosJSON.usuarios[i].id){
+        i++;
+
+
+    }
+    //acha posicao
+    while(usuarioCorrente.aulas_agendadas[j] && usuarioCorrente.aulas_agendadas[j].id_professor != usuariosJSON.usuarios[j].id_usuario){
+        j++;
+
+    }
+    console.log(usuariosJSON.usuarios[i]);
+    if(usuarioCorrente.aulas_agendadas[j] != undefined && materiaExiste(usuarioCorrente)){
+        usuarioCorrente.aulas_agendadas[j].data_aula.push(data_materia);
+        usuariosJSON.usuarios[i].aulas_agendadas[j].data_aula.push(data_materia);
+    }
+    else{
     let aula = {
         "id_aula": id_aula,
         "id_aluno": usuarioCorrente.id,
-        "id_professor": professor.id,
+        "id_professor": professor.id_usuario,
         "nome_professor": professor.nome,
-        "data_aula": data_materia,
-        "hora_aula": "",
+        "data_aula": [data_materia],
+        "hora_aula": hora_materia,
     };
-    //console.log(usuarioCorrente.aulas_agendadas);
 
     usuarioCorrente.aulas_agendadas.push(aula);
-    sessionStorage.setItem('usuarioCorrente', JSON.stringify(usuarioCorrente));
-    
-    while(usuarioCorrente.id != usuariosJSON.usuarios[i].id){
-        i++;
-    }
     usuariosJSON.usuarios[i].aulas_agendadas.push(aula);
+    }    
+
+    sessionStorage.setItem('usuarioCorrente', JSON.stringify(usuarioCorrente));
     localStorage.setItem('db_usuarios', JSON.stringify(usuariosJSON));
 }
+
 $(document).on('click','#btn_marcar',function(){
 
     marcarAula(professor);
-    //console.log(professor.nome)
+    alert('aula marcada');
 })
 
     // Função para data
@@ -99,8 +116,20 @@ $(document).on('click','#btn_marcar',function(){
         result.setDate(result.getDate() + days);
         return result;
       }
+    Date.prototype.addHours = function(h) {
+        this.setTime(this.getTime() + (h*60*60*1000));
+        return this;
+    }
 
+    function materiaExiste(usuarioCorrente){
+        let existe = false;
+        for(i=0;i<usuarioCorrente.aulas_agendadas.length; i++)
+        if(usuarioCorrente.aulas_agendadas[i].id_professor = professor.id_usuario ){
+            existe = true
 
+        }
+        return existe;
+    }
     // função para gerar códigos randômicos a serem utilizados como código de usuário
     // Fonte: https://stackoverflow.com/questions/105034/how-to-create-guid-uuid
     function generateUUID() { // Public Domain/MIT

@@ -3,7 +3,7 @@ $(document).ready()
      
     
     let main = document.querySelector('main');
-
+    
     let usuarioCorrente = JSON.parse(sessionStorage.getItem('usuarioCorrente'));
 
     window.onload = hideSearch();
@@ -12,14 +12,15 @@ $(document).ready()
  
     let data_atual = new Date();
 
-    usuarioCorrente.aulas_agendadas.forEach( (materia) => {        
+   
 
+    usuarioCorrente.aulas_agendadas.forEach( (materia) => {
+        
+        console.log(materia.data_aula);
         materia.data_aula.forEach( (data_materia) =>{
+            data_materia = new Date(data_materia);
 
-            data_materia = new Date(data_materia);            
-            
-            if((addDays(data_atual, -7) < data_materia) && (data_atual > data_materia)){
-
+            if(data_atual < data_materia){
                 let cardDFlex = document.createElement('div');
                 cardDFlex.className = 'd-flex justify-content-center';                
                 cardDFlex.style.backgroundColor = '#ffffff';
