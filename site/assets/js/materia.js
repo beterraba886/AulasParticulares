@@ -67,8 +67,6 @@ marcarAula = function(professor){
     let i=0, j=0;
     let data_materia = document.querySelector('#data_marcada').value;
     let hora_materia = document.querySelector('#hora_marcada').value;
-    console.log(hora_materia);
-    data_materia = new Date(data_materia);
     let id_aula = generateUUID();
     //acha posição do aulas agendadas no usuario corrente
     while(usuarioCorrente.id != usuariosJSON.usuarios[i].id){
@@ -94,6 +92,7 @@ marcarAula = function(professor){
         "nome_professor": professor.nome,
         "data_aula": [data_materia],
         "hora_aula": hora_materia,
+        "disciplina": professor.disciplina,
     };
 
     usuarioCorrente.aulas_agendadas.push(aula);
@@ -116,6 +115,7 @@ $(document).on('click','#btn_marcar',function(){
         result.setDate(result.getDate() + days);
         return result;
       }
+
     Date.prototype.addHours = function(h) {
         this.setTime(this.getTime() + (h*60*60*1000));
         return this;

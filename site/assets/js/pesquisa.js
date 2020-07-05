@@ -17,7 +17,6 @@ $(document).ready()
     function pesquisar() {
         let input = document.getElementById('txt_disciplina');
         let valor = input.value;
-        console.log(valor);
         texto = "";
         professores.forEach((professor)=>{
             if(professor.disciplina.includes(valor)){
