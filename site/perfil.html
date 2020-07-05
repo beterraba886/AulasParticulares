@@ -19,7 +19,8 @@
     </header>
 
     <main class="d-xl-flex justify-content-center align-content-center align-self-center justify-content-xl-center align-items-xl-center" style="width: 100%;height: 100%;">
-        <div>
+
+        <div id="dados_perfil">
 
             <div class="d-flex d-xl-flex justify-content-center justify-content-xl-center" style="padding: 50px;width: 100%;">
                 <img src="assets/img/pexels-photo-2100063.jpeg" style="width: 120px;height: 140px;">
@@ -44,8 +45,16 @@
                 </div>
 
                 <div class="d-flex justify-content-center" style="width: 100%;padding: 20px;">
+                    <input class="form-control-lg" type="number" id="valor" style="font-family: Capriola, sans-serif;" placeholder="Valor da Aula">
+                </div>
+
+                <div class="d-flex justify-content-center" style="width: 100%;padding: 20px;">
+                    <input class="form-control-lg" type="url" id="valor" style="font-family: Capriola, sans-serif;" placeholder="Link">
+                </div>
+
+                <div class="d-flex justify-content-center" style="width: 100%;padding: 20px;">
                     <div style="padding: 5px;">
-                        <button class="btn btn-primary" type="button" style="font-family: Capriola, sans-serif;">Atualizar Perfil</button>
+                        <button class="btn btn-primary" type="button" id="btn_atualizar" style="font-family: Capriola, sans-serif;">Atualizar Perfil</button>
                     </div>
                 </div>
 
@@ -76,7 +85,9 @@
         </div>
         </div>
     </nav>
+    
     <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/perfil.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 </body>
 
