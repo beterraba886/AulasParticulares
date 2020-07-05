@@ -1,12 +1,16 @@
 $(document).ready()
 {
-
     let usuarioLogado = JSON.parse(sessionStorage.getItem('usuarioCorrente'));    
-
+   
     carregar_dados_usuario();
 
+    window.onload = hideSearch();
     document.getElementById('btn_atualizar').addEventListener('click', atualizar_dados);       
+    
 
+    /**
+     * Carrega os dados do usuario logado na pagina de perfil.
+     */
     function carregar_dados_usuario() {        
 
         if(usuarioLogado.tipo == false){
@@ -48,6 +52,9 @@ $(document).ready()
     }
 
 
+    /**
+     * Atualiza dados do usuario logado no localStorage e no sessionStorage
+     */
     function atualizar_dados() {
 
         let new_db_usuarios = JSON.parse(localStorage.getItem('db_usuarios'));
@@ -87,5 +94,19 @@ $(document).ready()
         
         document.location.reload(true);
     }
+
+    /**
+     * Esconde a opção de pesquisar na barra de navegação 
+     * caso o usuario logado seja um professor.
+     */
+    function hideSearch(){
+
+        if(usuarioLogado.tipo){
+            document.getElementById ('nav_pesquisar').hidden = true;
+        } else {
+            document.getElementById ('nav_pesquisar').hidden = false;
+        }
+    }
+
 
 }
