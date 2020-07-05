@@ -27,8 +27,8 @@ $(document).ready()
                     <div style="padding: 0px 15px;">
                         <div><label style="font-family: Capriola, sans-serif;font-size: 19px;">${professor.nome}</label></div>
                         <div><label style="font-family: Capriola, sans-serif;font-size: 14px;">Aulas para o ensino médio</label></div>
-                        <div><label style="font-family: Capriola, sans-serif;font-size: 14px;">Matemática</label></div>
-                        <div><button class="btn btn-primary" type="button" style="font-family: Capriola, sans-serif;height: 31px;width: 99px;font-size: 13px;">Detalhes</button></div>
+                        <div><label style="font-family: Capriola, sans-serif;font-size: 14px;"mática</label></div>
+                        <div><a href="materia.html?prof_id=${professor.id}"><button class="btn btn-primary" type="button" style="font-family: Capriola, sans-serif;height: 31px;width: 99px;font-size: 13px;">Detalhes</button></a></div>
                     </div>
                 </div>
                 `;
