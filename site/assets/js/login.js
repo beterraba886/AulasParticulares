@@ -37,21 +37,13 @@ $(document).ready()
             return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
         });
     }
-<<<<<<< HEAD
     const dataAula = [new Date("2020-06-30"), new Date("2020-07-01"), new Date("2020-07-01")];
     const dataAula2 = [new Date("2020-06-23"), new Date("2020-07-03"), new Date("2020-06-13")];
-=======
-    
-    /*
-    const dataAula = [new Date("2020-07-04"), new Date("2020-07-11"), new Date("2020-07-20")];
-    const dataAula2 = [new Date("2020-07-04"), new Date("2020-07-12"), new Date("2020-07-14")];
-    
->>>>>>> b6dc18ca1258a1bff42962d0f3ff594348d0399a
     const materiasIniciais = [// id, discplina, professor, valor
             { "id": generateUUID(), "disciplina": "matematica", "professor": "joao", "valor": "100", "data": dataAula},
             { "id": generateUUID(), "disciplina": "quimica", "professor": "raquel", "valor": "120", "data": dataAula2},
         ];
-    */
+    
 
     const dadosIniciais = {
 
@@ -82,9 +74,19 @@ $(document).ready()
                         "id_aluno" : "",
                         "id_professor" : "",                        
                         "nome_professor" : "",
-                        "data_aula" : "",
+                        "data_aula" : dataAula,
                         "hora_aula" : "",
-                    }
+                    },
+                    
+                    {   
+                        // id_aula necessario para excluir aula do usuario proff e do usuario aluno
+                        "id_aula" : "", 
+                        "id_aluno" : "",
+                        "id_professor" : "",                        
+                        "nome_professor" : "",
+                        "data_aula" : dataAula,
+                        "hora_aula" : "",
+                    },
                 ]
             },
 
@@ -108,7 +110,17 @@ $(document).ready()
                         "nome_aluno" : "",
                         "data_aula" : "",
                         "hora_aula" : "",
-                    }
+                    },
+
+                    {   
+                        // id_aula necessario para excluir aula do usuario proff e do usuario aluno
+                        "id_aula" : "", 
+                        "id_aluno" : "",
+                        "id_professor" : "",                        
+                        "nome_professor" : "",
+                        "data_aula" : dataAula,
+                        "hora_aula" : "",
+                    },
                 ]
             }
 

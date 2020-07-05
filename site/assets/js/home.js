@@ -8,14 +8,11 @@ $(document).ready()
 
     //
 
-   
-    usuarioCorrente.materias.forEach( (materia) => {
-
-        materia.data.forEach( (data_materia) =>{
+    usuarioCorrente.aulas_agendadas.forEach( (materia) => {
+        materia.data_aula.forEach( (data_materia) =>{
             data_materia = new Date(data_materia);
             console.log(data_materia);
             if((addDays(data_atual, -7) < data_materia) && (data_atual > data_materia)){
-                console.log('teste');
                 let cardDFlex = document.createElement('div');
                 cardDFlex.className = 'd-flex justify-content-center';                
                 cardDFlex.style.backgroundColor = '#ffffff';
