@@ -15,8 +15,13 @@ $(document).ready()
     data_hoje = data_hoje.toISOString().slice(0,10);
 
 
-    for(i=0;i<usuariosJSON.usuarios.length && professor_ID != usuariosJSON.usuarios[i].id; i++){
-        professor = usuariosJSON.usuarios[i];
+    for(i=0;i<usuariosJSON.usuarios.length;i++){
+        console.log("usuarioJson id: " + usuariosJSON.usuarios[i].id_usuario);
+        console.log("prof id: " + professor_ID);
+        if(usuariosJSON.usuarios[i].id_usuario == professor_ID){
+            console.log('alo')
+            professor = usuariosJSON.usuarios[i];
+        }
     };
 
     conteudo_pagina = `
