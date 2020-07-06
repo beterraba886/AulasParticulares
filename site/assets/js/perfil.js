@@ -5,6 +5,7 @@ $(document).ready()
     carregar_dados_usuario();
 
     window.onload = hideSearch();
+    
     document.getElementById('btn_atualizar').addEventListener('click', atualizar_dados);       
     
 
