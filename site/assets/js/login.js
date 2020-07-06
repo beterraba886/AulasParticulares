@@ -49,9 +49,6 @@ $(document).ready()
             return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
         });
     }
-    
-    //const dataAula = [new Date("2020-06-15"), new Date("2020-06-01"), new Date("2020-07-10")];
-    //const dataAula2 = [new Date("2020-06-23"), new Date("2020-07-03"), new Date("2020-06-13")];
 
     const dadosIniciais = {
 

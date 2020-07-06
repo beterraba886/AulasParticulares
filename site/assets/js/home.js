@@ -121,8 +121,6 @@ $(document).ready()
 
                 }
 
-
-
             if (controle == 0) {
 
                 let cardDFlex = document.createElement('div');

@@ -14,7 +14,6 @@ $(document).ready()
     addDays(data_hoje, 1);
     data_hoje = data_hoje.toISOString().slice(0,10);
 
-
     for(i=0;i<usuariosJSON.usuarios.length;i++){
         if(usuariosJSON.usuarios[i].id_usuario == professor_ID){
             professor = usuariosJSON.usuarios[i];
