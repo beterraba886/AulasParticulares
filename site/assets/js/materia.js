@@ -16,13 +16,11 @@ $(document).ready()
 
 
     for(i=0;i<usuariosJSON.usuarios.length;i++){
-        console.log("usuarioJson id: " + usuariosJSON.usuarios[i].id_usuario);
-        console.log("prof id: " + professor_ID);
         if(usuariosJSON.usuarios[i].id_usuario == professor_ID){
-            console.log('alo')
             professor = usuariosJSON.usuarios[i];
         }
     };
+    console.log(professor);
 
     conteudo_pagina = `
     
@@ -70,42 +68,53 @@ main.innerHTML = conteudo_pagina;
 
 marcarAula = function(professor){
 
-    let i=0, j=0;
+    let i=0, j=0, z=0;
     let data_materia = document.querySelector('#data_marcada').value;
     let hora_materia = document.querySelector('#hora_marcada').value;
 
     data_materia = new Date(data_materia);
     let id_aula = generateUUID();
     //acha posição do aulas agendadas no usuario corrente
-    while(usuarioCorrente.id != usuariosJSON.usuarios[i].id){
+    while(usuarioCorrente.id_usuario != usuariosJSON.usuarios[i].id_usuario){
         i++;
 
-
     }
-    //acha posicao
+    //acha posicao do usuario no localStorage
     while(usuarioCorrente.aulas_agendadas[j] && usuarioCorrente.aulas_agendadas[j].id_professor != usuariosJSON.usuarios[j].id_usuario){
         j++;
 
     }
-    //console.log(usuariosJSON.usuarios[i]);
+/*
     if(usuarioCorrente.aulas_agendadas[j] != undefined && materiaExiste(usuarioCorrente)){
         usuarioCorrente.aulas_agendadas[j].data_aula.push(data_materia);
         usuariosJSON.usuarios[i].aulas_agendadas[j].data_aula.push(data_materia);
+        professor.aulas_agendadas.data_aula.push(data_materia);
     }
     else{
+*/
     let aula = {
         "id_aula": id_aula,
-        "id_aluno": usuarioCorrente.id,
+        "id_aluno": usuarioCorrente.id_usuario,
         "id_professor": professor.id_usuario,
         "nome_professor": professor.nome,
-        "data_aula": [data_materia],
+        "data_aula": data_materia.toISOString().slice(0,10),
         "hora_aula": hora_materia,
         "disciplina": professor.disciplina,
+    };
+    let aula_professor = {
+        "id_aula": id_aula,
+        "id_aluno": usuarioCorrente.id_usuario,
+        "id_professor": professor.id_usuario,
+        "nome_aluno": usuarioCorrente.nome,
+        "disciplina": professor.disciplina,
+        "data_aula": data_materia.toISOString().slice(0,10),
+        "hora_aula": hora_materia,
     };
 
     usuarioCorrente.aulas_agendadas.push(aula);
     usuariosJSON.usuarios[i].aulas_agendadas.push(aula);
-    }    
+    professor.aulas_agendadas.push(aula_professor);
+//   }    
 
     sessionStorage.setItem('usuarioCorrente', JSON.stringify(usuarioCorrente));
     localStorage.setItem('db_usuarios', JSON.stringify(usuariosJSON));
@@ -128,7 +137,7 @@ $(document).on('click','#btn_marcar',function(){
         this.setTime(this.getTime() + (h*60*60*1000));
         return this;
     }
-
+    /*
     function materiaExiste(usuarioCorrente){
         let existe = false;
         for(i=0;i<usuarioCorrente.aulas_agendadas.length; i++)
@@ -138,6 +147,8 @@ $(document).on('click','#btn_marcar',function(){
         }
         return existe;
     }
+    */
+
     // função para gerar códigos randômicos a serem utilizados como código de usuário
     // Fonte: https://stackoverflow.com/questions/105034/how-to-create-guid-uuid
     function generateUUID() { // Public Domain/MIT
