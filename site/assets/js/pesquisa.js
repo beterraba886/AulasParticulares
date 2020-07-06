@@ -63,16 +63,16 @@ $(document).ready()
                     <div style="padding: 0px 15px;">
 
                         <div>
-                            <label style="font-family: Capriola, sans-serif;font-size: 19px;">${professor.nome}</label>
+                            <label style="font-family: Capriola, sans-serif;font-size: 19px; margin: 5px">${professor.nome}</label>
                         </div>                        
 
                         <div>
-                            <label style="font-family: Capriola, sans-serif;font-size: 14px;">${professor.disciplina}</label>
+                            <label style="font-family: Capriola, sans-serif;font-size: 18px; margin: 8px">${professor.disciplina}</label>
                         </div>
 
                         <div>
                             <a href="materia.html?prof_id=${professor.id_usuario}">
-                            <button class="btn btn-primary" type="button" style="font-family: Capriola, sans-serif;height: 31px;width: 99px;font-size: 13px;">Detalhes</button></a>
+                            <button class="btn btn-primary btn-lg" type="button" style="font-family: Capriola, sans-serif; margin:2px">Detalhes</button></a>
                         </div>
                     </div>
                 </div>
