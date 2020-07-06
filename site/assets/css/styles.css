@@ -9,3 +9,8 @@
 .form-group input{
   color:black;
 }
+
+.form-group select{
+  color: black !important;
+}
+
