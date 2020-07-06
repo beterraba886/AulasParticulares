@@ -3,7 +3,7 @@ $(document).ready()
     let main = document.querySelector('main');
 
     let usuarioCorrente = JSON.parse(sessionStorage.getItem('usuarioCorrente'));
-    var usuariosJSON = localStorage.getItem('db_usuarios');
+    var usuariosJSON = JSON.parse(localStorage.getItem('db_usuarios'));
 
     window.onload = hideSearch();
 
@@ -99,16 +99,25 @@ $(document).ready()
                     button.type = 'button';
                     button.innerText = 'Cancelar Agendamento';
                     button.addEventListener('click', function(){
-                        let i=0;
+                        let i=0, j=0, z=0;
+
                         while(usuarioCorrente.aulas_agendadas[i].id_aula != this.id){
                             i++;
-                            console.log(i);
                         }
-
+                        while(usuarioCorrente.id_usuario != usuariosJSON.usuarios[j].id_usuario){
+                            j++;
+                        }
+                        console.log(usuariosJSON.usuarios[z].aulas_agendadas);
+                        while(this.id != usuariosJSON.usuarios[j].aulas_agendadas[z].id_aula){
+                            z++;
+                        }
                         usuarioCorrente.aulas_agendadas.splice(i, 1);
-
+                        //console.log(usuariosJSON.usuarios[j].aulas_agendadas);
+                        usuariosJSON.usuarios[j].aulas_agendadas.splice(z, 1);
+                        //usuariosJSON.usuarios[j].aulas_agendadas = usuarioCorrente.aulas_agendadas;
                         
                         sessionStorage.setItem('usuarioCorrente', JSON.stringify(usuarioCorrente));
+                        localStorage.setItem('db_usuarios', JSON.stringify(usuariosJSON));
                         location.reload();
 
                     });
