@@ -23,42 +23,42 @@ $(document).ready()
     
     <div class="d-flex justify-content-center" style="background-color: #ffffff;">
 
-        <div class="text-center"><img class="rounded img-fluid" src="assets/img/pexels-photo-2100063.jpeg" style="height: 440px;">
-            
-            <div>
-                <h1 class="text-center" style="font-family: Capriola, sans-serif;">${professor.nome}</h1>
-            </div>
-            <div>
-                <h6 class="text-center" style="font-family: Capriola, sans-serif;">${professor.disciplina} </h6>
-            </div>
-            
+    <div class="text-center"><img class="rounded img-fluid" src="assets/img/pexels-photo-2100063.jpeg" style="height: 440px;">
+        
+        <div>
+            <h1 class="text-center" style="font-family: Capriola, sans-serif;">${professor.nome}</h1>
+        </div>
+        <div>
+            <h6 class="text-center" style="font-family: Capriola, sans-serif;">${professor.disciplina} </h6>
+        </div>
+        
+        <hr style="background-color: #00b2f7;">
+        
+        <div>
+            <h3 style="font-family: Capriola, sans-serif;">Sobre</h3>
+        </div>
+        
+        <div>
+            <p class="text-justify" style="font-family: Capriola, sans-serif;"><strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled
+                it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing
+                Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+            <p class="text-center" style="font-family: Capriola, sans-serif;">Outras Informações:&nbsp;<a href="#">${professor.link}</a></p>
             <hr style="background-color: #00b2f7;">
-            
-            <div>
-                <h3 style="font-family: Capriola, sans-serif;">Sobre</h3>
-            </div>
-            
-            <div>
-                <p class="text-justify" style="font-family: Capriola, sans-serif;"><strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled
-                    it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing
-                    Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                <p class="text-center" style="font-family: Capriola, sans-serif;">Outras Informações:&nbsp;<a href="#">${professor.link}</a></p>
-                <hr style="background-color: #00b2f7;">
-            
-            </div>
-            
-            <div>
-                <h3 class="text-center" style="font-family: Capriola, sans-serif;">Valor das Aulas</h3>
-                <p class="text-center" style="font-family: Capriola, sans-serif;">${professor.valor}</p>                
-                <input type="date" min="${data_hoje}" id="data_marcada">
-                <input type="time" id="hora_marcada" min="09:00" max="22:00" pattern="([01]?[0-9]|2[0-3]):[0-5][0-9]" required>   
-                <button id="btn_marcar" class="btn btn-primary" type="button" style="font-family: Capriola, sans-serif;">Schedule Lesson</button>
-            </div>
         
         </div>
+        
+        <div>
+            <h3 class="text-center" style="font-family: Capriola, sans-serif;">Valor das Aulas</h3>
+            <p class="text-center" style="font-family: Capriola, sans-serif;">${professor.valor}</p>                
+            <input type="date" min="${data_hoje}" id="data_marcada" style="margin: 8px; padding: 6px 12px;" >
+            <input type="time" id="hora_marcada" min="09:00" max="22:00" pattern="([01]?[0-9]|2[0-3]):[0-5][0-9]" style="margin: 8px; padding: 6px 12px;"  required>   
+            <button id="btn_marcar" class="btn btn-primary btn-lg" type="button" style="font-family: Capriola, sans-serif; padding: 6px 12px;">Schedule Lesson</button>
+        </div>
+    
     </div>
+</div>
 
-    <hr style="background-color: #00b2f7;">   
+<hr style="background-color: #00b2f7;">      
 
 `
 main.innerHTML = conteudo_pagina;
