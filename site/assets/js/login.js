@@ -49,53 +49,42 @@ $(document).ready()
             return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
         });
     }
-    const dataAula = [new Date("2020-06-15"), new Date("2020-06-01"), new Date("2020-07-09")];
-    const dataAula2 = [new Date("2020-06-23"), new Date("2020-07-03"), new Date("2020-06-13")];
-
-    const materiasIniciais = [
-
-            { "id": generateUUID(), "disciplina": "matematica", "professor": "joao", "valor": "100", "data": dataAula},
-            { "id": generateUUID(), "disciplina": "quimica", "professor": "raquel", "valor": "120", "data": dataAula2},
-        ];
     
+    const dataAula = [new Date("2020-06-15"), new Date("2020-06-01"), new Date("2020-07-10")];
+    const dataAula2 = [new Date("2020-06-23"), new Date("2020-07-03"), new Date("2020-06-13")];
 
     const dadosIniciais = {
 
         usuarios: [
             
-            //{ "id": generateUUID (), "login": "admin", "senha": "123", "nome": "Administrador do Sistema", "email": "admin@abc.com", "tipo": "true"},
-            //{ "id": generateUUID (), "login": "user", "senha": "123", "nome": "Usuario Comum", "email": "user@abc.com", "tipo": "false"},
-            //{ "id": generateUUID (), "login": "teste", "senha": "teste", "nome": "Teste", "email": "user@abc.com", "tipo": "false","materias": materiasIniciais},
-            //{ "id": generateUUID (), "login": "prof", "senha": "prof", "nome": "professor_teste1", "email": "user@abc.com", "tipo": "true","materias": materiasIniciais},
-            //{ "id": generateUUID (), "login": "prof2", "senha": "123", "nome": "professor_teste2", "email": "user@abc.com", "tipo": "true","materias": materiasIniciais},
-            
             {
-                "id_usuario" : generateUUID(), 
+                // usuarios do tipo aluno nao preenchem os atributos-> disiplina, valor e link.
+                "id_usuario" : "0001", 
                 "tipo" : false, 
                 "username" : "aluno", 
                 "nome" : "Aluno da Silva", 
                 "email" : "aluno-da-silva@email.com", 
-                "disciplina" : "Matemática", 
-                "valor" : "100", 
+                "disciplina" : "",  
+                "valor" : "", 
                 "link" : "", 
                 "senha" : "aluno",
 
                 "aulas_agendadas": [
-                    {   
-                        // id_aula necessario para excluir aula do usuario proff e do usuario aluno
-                        "id_aula" : "", 
-                        "id_aluno" : "",
-                        "id_professor" : "",                        
-                        "nome_professor" : "",
-                        "disciplina" : "",
+                    
+                    {                           
+                        "id_aula" : "01", 
+                        "id_aluno" : "0001",
+                        "id_professor" : "0001a",                        
+                        "nome_professor" : "Professor da Silva",
+                        "disciplina" : "Matemática",
                         "data_aula" : dataAula,
-                        "hora_aula" : "",
+                        "hora_aula" : "12:00",
                     }
                 ]
             },
 
             {
-                "id_usuario" : generateUUID(), 
+                "id_usuario" : "0001a", 
                 "tipo" : true, 
                 "username" : "professor", 
                 "nome" : "Professor da Silva", 
@@ -108,13 +97,13 @@ $(document).ready()
                 "aulas_agendadas": [
 
                     {                           
-                        "id_aula" : "", 
-                        "id_aluno" : "",
-                        "id_professor" : "",
-                        "nome_aluno" : "",
-                        "disciplina" : "",
-                        "data_aula" : [],
-                        "hora_aula" : "",
+                        "id_aula" : "01", 
+                        "id_aluno" : "0001",
+                        "id_professor" : "0001a",
+                        "nome_aluno" : "Aluno da Silva",
+                        "disciplina" : "Matemática",
+                        "data_aula" : dataAula,
+                        "hora_aula" : "12:00",
                     }
                 ]
             }
