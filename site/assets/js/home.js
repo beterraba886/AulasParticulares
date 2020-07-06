@@ -4,6 +4,7 @@ $(document).ready()
     
     let main = document.querySelector('main');
     
+    
     let usuarioCorrente = JSON.parse(sessionStorage.getItem('usuarioCorrente'));
 
     window.onload = hideSearch();
@@ -15,11 +16,9 @@ $(document).ready()
    
 
     usuarioCorrente.aulas_agendadas.forEach( (materia) => {
-        
-        console.log(materia.data_aula);
+        console.log(materia);
         materia.data_aula.forEach( (data_materia) =>{
             data_materia = new Date(data_materia);
-
             if(data_atual < data_materia){
                 let cardDFlex = document.createElement('div');
                 cardDFlex.className = 'd-flex justify-content-center';                
@@ -34,21 +33,21 @@ $(document).ready()
 
                 let cardTitle = document.createElement('h4');
                 cardTitle.className = 'card-title';
-                cardTitle.id = 'disciplina';
+                cardTitle.id = 'nome';
                 cardTitle.style.fontFamily = 'Capriola, sans-serif';
-                cardTitle.innerText = materia.disciplina;
+                cardTitle.innerText = materia.nome_professor;
 
                 let textMuted1 = document.createElement('h6');
                 textMuted1.className = 'text-muted card-subtitle mb-2';
-                textMuted1.id = 'nome';
+                textMuted1.id = 'disciplina';
                 textMuted1.style.fontFamily = 'Capriola, sans-serif'; 
-                textMuted1.innerText = materia.professor;
+                textMuted1.innerText = materia.disciplina;
 
                 let textMuted2 = document.createElement('h6');                
                 textMuted2.className = 'text-muted card-subtitle mb-2';
                 textMuted2.id = 'data_hora';
                 textMuted2.style.fontFamily = 'Capriola, sans-serif';
-                textMuted2.innerText = 'Dia: 00/00/2020 - Hora: 00:00';
+                textMuted2.innerText = data_materia.toISOString().slice(0,10) /* + '-' + materia.hora_aula*/;
                 
                 let cardText = document.createElement('p');
                 cardText.className = 'card-text';
