@@ -20,7 +20,7 @@ $(document).ready()
         if(usuariosJSON.usuarios[i].id_usuario == professor_ID){
             professor = usuariosJSON.usuarios[i];
         }
-    };    
+    };
 
     conteudo_pagina = `
     
@@ -67,10 +67,16 @@ $(document).ready()
 main.innerHTML = conteudo_pagina;
 
 marcarAula = function(professor){
-
     let i=0, j=0, z=0;
     let data_materia = document.querySelector('#data_marcada').value;
     let hora_materia = document.querySelector('#hora_marcada').value;
+    if(!data_materia || !hora_materia){
+        alert('preencha todos os campos')
+    }
+
+    else{
+
+    
 
     data_materia = new Date(data_materia);
     let id_aula = generateUUID();
@@ -118,12 +124,14 @@ marcarAula = function(professor){
 
     sessionStorage.setItem('usuarioCorrente', JSON.stringify(usuarioCorrente));
     localStorage.setItem('db_usuarios', JSON.stringify(usuariosJSON));
+    alert('aula marcada');
+
+}
 }
 
 $(document).on('click','#btn_marcar',function(){
 
     marcarAula(professor);
-    alert('aula marcada');
 })
 
     // Função para data

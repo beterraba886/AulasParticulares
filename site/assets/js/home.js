@@ -3,6 +3,7 @@ $(document).ready()
     let main = document.querySelector('main');
 
     let usuarioCorrente = JSON.parse(sessionStorage.getItem('usuarioCorrente'));
+    var usuariosJSON = JSON.parse(localStorage.getItem('db_usuarios'));
 
     window.onload = hideSearch();
 
@@ -92,11 +93,34 @@ $(document).ready()
 
                     let button = document.createElement('button');
                     button.className = 'btn btn-primary';
-                    button.id = 'btn_cancelar';
+                    button.id =  `${materia.id_aula}`;
                     button.style.fontFamily = 'Capriola, sans-serif';
                     button.style.margin = '8px';
                     button.type = 'button';
                     button.innerText = 'Cancelar Agendamento';
+                    button.addEventListener('click', function(){
+                        let i=0, j=0, z=0;
+
+                        while(usuarioCorrente.aulas_agendadas[i].id_aula != this.id){
+                            i++;
+                        }
+                        while(usuarioCorrente.id_usuario != usuariosJSON.usuarios[j].id_usuario){
+                            j++;
+                        }
+                        console.log(usuariosJSON.usuarios[z].aulas_agendadas);
+                        while(this.id != usuariosJSON.usuarios[j].aulas_agendadas[z].id_aula){
+                            z++;
+                        }
+                        usuarioCorrente.aulas_agendadas.splice(i, 1);
+                        //console.log(usuariosJSON.usuarios[j].aulas_agendadas);
+                        usuariosJSON.usuarios[j].aulas_agendadas.splice(z, 1);
+                        //usuariosJSON.usuarios[j].aulas_agendadas = usuarioCorrente.aulas_agendadas;
+                        
+                        sessionStorage.setItem('usuarioCorrente', JSON.stringify(usuarioCorrente));
+                        localStorage.setItem('db_usuarios', JSON.stringify(usuariosJSON));
+                        location.reload();
+
+                    });
 
                     let button2 = document.createElement('button');
                     button2.className = 'btn btn-primary';
@@ -165,6 +189,15 @@ $(document).ready()
         var result = new Date(date);
         result.setDate(result.getDate() + days);
         return result;
+    }
+    function cancelarAula(aula){ 
+        //usuarioCorrente.aulas_agendadas
+        
+        
+        for(i=0;i<aula,length;i++){
+            //console.log(aula);
+
+        }
     }
 
     /**
