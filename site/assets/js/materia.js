@@ -35,24 +35,24 @@ $(document).ready()
             <hr style="background-color: #00b2f7;">
             
             <div>
-                <h3 style="font-family: Capriola, sans-serif;">About</h3>
+                <h3 style="font-family: Capriola, sans-serif;">Sobre</h3>
             </div>
             
             <div>
                 <p class="text-justify" style="font-family: Capriola, sans-serif;"><strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled
                     it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing
                     Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                <p class="text-center" style="font-family: Capriola, sans-serif;">More Info:&nbsp;<a href="#">https://github.com/JaneDoe</a></p>
+                <p class="text-center" style="font-family: Capriola, sans-serif;">Outras Informações:&nbsp;<a href="#">${professor.link}</a></p>
                 <hr style="background-color: #00b2f7;">
             
             </div>
             
             <div>
-                <h3 class="text-center" style="font-family: Capriola, sans-serif;">Value of Lessons</h3>
-                <p class="text-center" style="font-family: Capriola, sans-serif;">${professor.valor}</p>
-                <button id="btn_marcar" class="btn btn-primary" type="button" style="font-family: Capriola, sans-serif;">Schedule Lesson</button>
+                <h3 class="text-center" style="font-family: Capriola, sans-serif;">Valor das Aulas</h3>
+                <p class="text-center" style="font-family: Capriola, sans-serif;">${professor.valor}</p>                
                 <input type="date" min="${data_hoje}" id="data_marcada">
                 <input type="time" id="hora_marcada" min="09:00" max="22:00" pattern="([01]?[0-9]|2[0-3]):[0-5][0-9]" required>   
+                <button id="btn_marcar" class="btn btn-primary" type="button" style="font-family: Capriola, sans-serif;">Schedule Lesson</button>
             </div>
         
         </div>
@@ -64,10 +64,11 @@ $(document).ready()
 main.innerHTML = conteudo_pagina;
 
 marcarAula = function(professor){
+
     let i=0, j=0;
     let data_materia = document.querySelector('#data_marcada').value;
     let hora_materia = document.querySelector('#hora_marcada').value;
-    console.log(hora_materia);
+    //console.log(hora_materia);
     data_materia = new Date(data_materia);
     let id_aula = generateUUID();
     //acha posição do aulas agendadas no usuario corrente
@@ -81,7 +82,7 @@ marcarAula = function(professor){
         j++;
 
     }
-    console.log(usuariosJSON.usuarios[i]);
+    //console.log(usuariosJSON.usuarios[i]);
     if(usuarioCorrente.aulas_agendadas[j] != undefined && materiaExiste(usuarioCorrente)){
         usuarioCorrente.aulas_agendadas[j].data_aula.push(data_materia);
         usuariosJSON.usuarios[i].aulas_agendadas[j].data_aula.push(data_materia);
