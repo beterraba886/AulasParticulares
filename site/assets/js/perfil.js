@@ -43,10 +43,9 @@ $(document).ready()
             inputUsername.value = usuarioLogado.username;
             inputName.value = usuarioLogado.nome;
             inputEmail.value = usuarioLogado.email;
-            inputDisciplina.value = usuarioLogado.disciplina;
+            inputDisciplina.value = usuarioLogado.disciplina;            
             inputValor.value = usuarioLogado.valor;
-            inputLink.value = usuarioLogado.link;
-
+            inputLink.value = usuarioLogado.link;            
         }
 
     }
