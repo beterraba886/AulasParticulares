@@ -43,11 +43,10 @@ $(document).ready()
 
             var controle = 0;
 
-            materia.data_aula.forEach((data_materia) => {
 
-                data_materia = new Date(data_materia);
+                materia.data_aula = new Date(materia.data_aula);
 
-                if (data_atual < data_materia) {
+                if (data_atual < materia.data_aula) {
 
                     controle++;                   
 
@@ -78,7 +77,7 @@ $(document).ready()
                     textMuted2.className = 'text-muted card-subtitle mb-2';
                     textMuted2.id = 'data_hora';
                     textMuted2.style.fontFamily = 'Capriola, sans-serif';
-                    textMuted2.innerText = data_materia.toISOString().slice(0, 10) /* + '-' + materia.hora_aula*/;
+                    textMuted2.innerText = materia.data_aula.toISOString().slice(0, 10)  + '    -   ' + materia.hora_aula;
 
                     let cardText = document.createElement('p');
                     cardText.className = 'card-text';
@@ -117,7 +116,7 @@ $(document).ready()
 
                 }
 
-            });
+
 
             if (controle == 0) {
 
