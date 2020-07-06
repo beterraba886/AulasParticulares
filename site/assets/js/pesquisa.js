@@ -3,6 +3,7 @@ $(document).ready()
     let usuarioCorrente = JSON.parse(sessionStorage.getItem('usuarioCorrente'));
     var usuariosJSON = JSON.parse(localStorage.getItem('db_usuarios'));
     document.getElementById('btn_pesquisa').addEventListener('click', pesquisar);
+    let logout = document.querySelector('#logout').addEventListener('click', logoutUser);
     let div_pesquisa = document.getElementById('div_pesquisa');
     let professores = [];
     let texto = "";
@@ -34,5 +35,12 @@ $(document).ready()
         })
 
         div_pesquisa.innerHTML = texto;
+    }
+
+    function logoutUser() {
+
+        usuarioCorrente = {};
+        sessionStorage.setItem('usuarioCorrente', JSON.stringify(usuarioCorrente));
+        window.location = 'index.html';
     }
 }

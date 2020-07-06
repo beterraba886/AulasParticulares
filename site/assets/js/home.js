@@ -65,7 +65,12 @@ $(document).ready()
                     cardTitle.className = 'card-title';
                     cardTitle.id = 'nome';
                     cardTitle.style.fontFamily = 'Capriola, sans-serif';
-                    cardTitle.innerText = materia.nome_professor;
+                    
+                    if (usuarioCorrente.tipo){
+                        cardTitle.innerText = materia.nome_aluno;
+                    } else {
+                        cardTitle.innerText = materia.nome_professor;
+                    }
 
                     let textMuted1 = document.createElement('h6');
                     textMuted1.className = 'text-muted card-subtitle mb-2';
@@ -115,8 +120,6 @@ $(document).ready()
                     main.appendChild(cardDFlex);
 
                 }
-
-
 
             if (controle == 0) {
 

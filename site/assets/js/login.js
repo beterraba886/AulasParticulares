@@ -49,9 +49,6 @@ $(document).ready()
             return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
         });
     }
-    
-    const dataAula = [new Date("2020-06-15"), new Date("2020-06-01"), new Date("2020-07-10")];
-    const dataAula2 = [new Date("2020-06-23"), new Date("2020-07-03"), new Date("2020-06-13")];
 
     const dadosIniciais = {
 
@@ -77,7 +74,7 @@ $(document).ready()
                         "id_professor" : "0001a",                        
                         "nome_professor" : "Professor da Silva",
                         "disciplina" : "Matemática",
-                        "data_aula" : dataAula,
+                        "data_aula" : "2020-07-10",
                         "hora_aula" : "12:00",
                     }
                 ]
@@ -102,7 +99,7 @@ $(document).ready()
                         "id_professor" : "0001a",
                         "nome_aluno" : "Aluno da Silva",
                         "disciplina" : "Matemática",
-                        "data_aula" : dataAula,
+                        "data_aula" : "2020-07-10",
                         "hora_aula" : "12:00",
                     }
                 ]
@@ -197,7 +194,7 @@ $(document).ready()
                     "id_professor" : "",
                     "nome_aluno" : "",
                     "disciplina" : "",
-                    "data_aula" : [],
+                    "data_aula" : "",
                     "hora_aula" : "",
                 }*/
             ]

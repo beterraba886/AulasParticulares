@@ -1,7 +1,9 @@
 $(document).ready()
 {
+
     let usuarioCorrente = JSON.parse(sessionStorage.getItem('usuarioCorrente'));
     let usuariosJSON = JSON.parse(localStorage.getItem('db_usuarios'));
+    let logout = document.querySelector('#logout').addEventListener('click', logoutUser);
     let main = document.querySelector('main');
     var professor;
     var url_string = window.location.href;
@@ -14,12 +16,15 @@ $(document).ready()
     addDays(data_hoje, 1);
     data_hoje = data_hoje.toISOString().slice(0,10);
 
-
     for(i=0;i<usuariosJSON.usuarios.length;i++){
         if(usuariosJSON.usuarios[i].id_usuario == professor_ID){
             professor = usuariosJSON.usuarios[i];
         }
+<<<<<<< HEAD
     };
+=======
+    };    
+>>>>>>> 1397330008a2727c65cbcab2f28b3a3d52858d50
 
     conteudo_pagina = `
     
@@ -172,6 +177,14 @@ $(document).on('click','#btn_marcar',function(){
             }
             return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
         });
+    }
+
+
+    function logoutUser() {
+
+        usuarioCorrente = {};
+        sessionStorage.setItem('usuarioCorrente', JSON.stringify(usuarioCorrente));
+        window.location = 'index.html';
     }
 
 }

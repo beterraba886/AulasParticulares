@@ -5,7 +5,9 @@ $(document).ready()
     carregar_dados_usuario();
 
     window.onload = hideSearch();
-    document.getElementById('btn_atualizar').addEventListener('click', atualizar_dados);       
+    
+    document.getElementById('btn_atualizar').addEventListener('click', atualizar_dados);    
+    let logout = document.querySelector('#logout').addEventListener('click', logoutUser);   
     
 
     /**
@@ -107,5 +109,11 @@ $(document).ready()
         }
     }
 
+    function logoutUser() {
+
+        usuarioLogado = {};
+        sessionStorage.setItem('usuarioCorrente', JSON.stringify(usuarioLogado));
+        window.location = 'index.html';
+    }
 
 }
