@@ -1,7 +1,9 @@
 $(document).ready()
 {
+
     let usuarioCorrente = JSON.parse(sessionStorage.getItem('usuarioCorrente'));
     let usuariosJSON = JSON.parse(localStorage.getItem('db_usuarios'));
+    let logout = document.querySelector('#logout').addEventListener('click', logoutUser);
     let main = document.querySelector('main');
     var professor;
     var url_string = window.location.href;
@@ -163,6 +165,14 @@ $(document).on('click','#btn_marcar',function(){
             }
             return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
         });
+    }
+
+
+    function logoutUser() {
+
+        usuarioCorrente = {};
+        sessionStorage.setItem('usuarioCorrente', JSON.stringify(usuarioCorrente));
+        window.location = 'index.html';
     }
 
 }
