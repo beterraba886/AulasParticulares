@@ -19,8 +19,7 @@ $(document).ready()
         if(usuariosJSON.usuarios[i].id_usuario == professor_ID){
             professor = usuariosJSON.usuarios[i];
         }
-    };
-    console.log(professor);
+    };    
 
     conteudo_pagina = `
     
