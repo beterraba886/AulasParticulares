@@ -77,7 +77,9 @@ $(document).ready()
                         "data_aula" : "2020-07-10",
                         "hora_aula" : "12:00",
                     }
-                ]
+                ],
+                
+                "mensagens" : []
             },
 
             {
@@ -102,7 +104,9 @@ $(document).ready()
                         "data_aula" : "2020-07-10",
                         "hora_aula" : "12:00",
                     }
-                ]
+                ],
+
+                "mensagens" : []
             }
 
         ]
@@ -197,6 +201,20 @@ $(document).ready()
                     "data_aula" : "",
                     "hora_aula" : "",
                 }*/
+            ],
+
+            "mensagens" : [
+
+                /*
+                    "id_mensagem" : "",
+                    "id_remetente" : "",
+                    "id_destinatario" : "",
+                    "assunto" : "", 
+                    "texto" : "",
+                    "arquivo" : "",
+                    "data" : new Date(),
+                    "lida" : false,
+                */
             ]
         };
 
@@ -258,7 +276,8 @@ $(document).ready()
                 usuarioCorrente.valor = usuario.valor;
                 usuarioCorrente.link = usuario.link;
                 usuarioCorrente.senha = usuario.senha;
-                usuarioCorrente.aulas_agendadas = usuario.aulas_agendadas;                                
+                usuarioCorrente.aulas_agendadas = usuario.aulas_agendadas;
+                usuarioCorrente.mensagens = usuario.mensagens;                          
                 
                 sessionStorage.setItem ('usuarioCorrente', JSON.stringify (usuarioCorrente));                
                 
