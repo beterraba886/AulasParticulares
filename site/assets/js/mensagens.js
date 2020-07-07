@@ -1,3 +1,6 @@
+/**
+ * @author Rayane Paiva Reginaldo
+ */
 $(document).ready()
 {
     var usuarioCorrente = JSON.parse(sessionStorage.getItem('usuarioCorrente'));
@@ -61,28 +64,60 @@ $(document).ready()
     
     selector.innerHTML = texto;
 
-
     /**
      * Retorna um objeto da mensagem a ser enviada.
      * @author Rayane Paiva Reginaldo
+     * @param {String} id_mensagem
      * @param {String} id_remetente 
      * @param {String} id_destinatario 
+     * @param {String} nome_remetente
      * @param {String} assunto 
      * @param {String} texto 
      * @param {BinaryType} arquivo 
      */
-    function constroiMSG(id_remetente, id_destinatario, assunto, texto, arquivo){
+    function constroiMSGEnviada(id_mensagem, id_remetente, nome_remetente, id_destinatario, assunto, texto, arquivo){
 
         return {
 
-            "id_mensagem" : generateUUID(),
+            "id_mensagem" : id_mensagem,
             "id_remetente" : id_remetente,
             "id_destinatario" : id_destinatario,                        
+            "nome_remetente" : nome_remetente,
             "assunto" : assunto, 
             "texto" : texto,
             "arquivo" : arquivo,
             "data" : new Date(),
-            "lida" : false,
+            "enviada" : true,
+            "recebida" : false,
+        };
+    }
+
+    
+    /**
+     * Retorna um objeto da mensagem a ser enviada.
+     * @author Rayane Paiva Reginaldo
+     * @param {String} id_mensagem 
+     * @param {String} id_remetente 
+     * @param {String} id_destinatario 
+     * @param {String} nome_remetente
+     * @param {String} assunto 
+     * @param {String} texto 
+     * @param {BinaryType} arquivo 
+     */
+    function constroiMSGRecebida(id_mensagem, id_remetente, nome_remetente, id_destinatario, assunto, texto, arquivo){
+
+        return {
+
+            "id_mensagem" : id_mensagem,
+            "id_remetente" : id_remetente,
+            "id_destinatario" : id_destinatario,                        
+            "nome_remetente" : nome_remetente,
+            "assunto" : assunto, 
+            "texto" : texto,
+            "arquivo" : arquivo,
+            "data" : new Date(),
+            "enviada" : false,
+            "recebida" : true,
         };
     }
 
@@ -109,29 +144,46 @@ $(document).ready()
     }
 
     /**
-     * Adiciona mensagens nos respectivos destinatarios no lolcalStorage
+     * Adiciona mensagens ao remetente
      * @author Rayane Paiva Reginaldo
-     * @param {String} id_remetente 
+     * @param {String} id_remetente       
+     * @param {Object} msg 
+     */
+    function addMsgRemetente(id_remetente, msg){        
+
+        let st = false;
+        
+        for (let index = 0 ; index < usuarioJSON.usuarios.length && st == false; index++) {            
+
+            if (usuarioJSON.usuarios[index].id_usuario == id_remetente) {
+                usuarioJSON.usuarios[index].mensagens.push(msg);
+                st = true;
+            }
+
+        } 
+
+    }
+
+    /**
+     * Adiciona mensagens ao destinatario
+     * @author Rayane Paiva Reginaldo
      * @param {String} id_destinatario 
      * @param {Object} msg 
      */
-    function addMsgUsuarios(id_remetente, id_destinatario, msg){        
+    function addMsgDestinatario(id_destinatario, msg){        
+
+        let st = false;
         
-        for (let index = 0 ; index < usuarioJSON.usuarios.length ; index++) {            
+        for (let index = 0 ; index < usuarioJSON.usuarios.length && st == false; index++) {            
 
             if (usuarioJSON.usuarios[index].id_usuario == id_destinatario) {
                 usuarioJSON.usuarios[index].mensagens.push(msg);
-            }
-
+                st = true;
             }
 
         }
 
-        localStorage.setItem('db_usuarios', JSON.stringify (usuarioJSON));
-        
-        alert('Mensagem Enviada!');
     }
-
 
     /**
      * Faz o envio da mensagem para o destinatario.
@@ -145,14 +197,21 @@ $(document).ready()
         var arquivo = document.getElementById('inputFile').value;
 
         var id_destinatario = getIDDestinatario(destinatario);
+
+        var id_msg = generateUUID();
+
+        var msg1 = constroiMSGEnviada(id_msg, usuarioCorrente.id_usuario, usuarioCorrente.nome, id_destinatario, assunto, mensagem, arquivo);
+        var msg2 = constroiMSGRecebida(id_msg, usuarioCorrente.id_usuario, usuarioCorrente.nome, id_destinatario, assunto, mensagem, arquivo);
+
+        usuarioCorrente.mensagens.push(msg1);
+
+        addMsgRemetente(usuarioCorrente.id_usuario, msg1);
+        addMsgDestinatario(id_destinatario, msg2);
+
+        sessionStorage.setItem('usuarioCorrente', JSON.stringify (usuarioCorrente));
+        localStorage.setItem('db_usuarios', JSON.stringify (usuarioJSON));
         
-        var msg = constroiMSG(usuarioCorrente.id_usuario, id_destinatario, assunto, mensagem, arquivo);
-
-        usuarioCorrente.mensagens.push(msg);        
-
-        addMsgUsuarios(usuarioCorrente.id_usuario, id_destinatario, msg);
-
-        sessionStorage.setItem('usuarioCorrente', JSON.stringify (usuarioCorrente));        
+        alert('Mensagem Enviada!');
     }
 
 
