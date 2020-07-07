@@ -123,8 +123,6 @@ $(document).ready()
                 usuarioJSON.usuarios[index].mensagens.push(msg);
             }
 
-            if (usuarioJSON.usuarios[index].id_usuario == id_remetente) {
-                usuarioJSON.usuarios[index].mensagens.push(msg);
             }
 
         }

@@ -1,3 +1,6 @@
+/**
+ * @author Rayane Paiva Reginaldo
+ */
 $(document).ready()
 {
     let usuarioLogado = JSON.parse(sessionStorage.getItem('usuarioCorrente'));    
