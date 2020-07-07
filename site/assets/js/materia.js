@@ -52,10 +52,10 @@ $(document).ready()
         
         <div>
             <h3 class="text-center" style="font-family: Capriola, sans-serif;">Valor das Aulas</h3>
-            <p class="text-center" style="font-family: Capriola, sans-serif;">${professor.valor}</p>                
+            <p class="text-center" style="font-family: Capriola, sans-serif;">R$ ${professor.valor}</p>                
             <input type="date" min="${data_hoje}" id="data_marcada" style="margin: 8px; padding: 6px 12px;" >
             <input type="time" id="hora_marcada" min="09:00" max="22:00" pattern="([01]?[0-9]|2[0-3]):[0-5][0-9]" style="margin: 8px; padding: 6px 12px;"  required>   
-            <button id="btn_marcar" class="btn btn-primary btn-lg" type="button" style="font-family: Capriola, sans-serif; padding: 6px 12px;">Schedule Lesson</button>
+            <button id="btn_marcar" class="btn btn-primary btn-lg" type="button" style="font-family: Capriola, sans-serif; padding: 6px 12px;">Agendar Aula</button>
         </div>
     
     </div>
