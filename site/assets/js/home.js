@@ -44,7 +44,6 @@ $(document).ready()
 
             var controle = 0;
 
-
                 materia.data_aula = new Date(materia.data_aula);
 
                 if (data_atual < materia.data_aula) {
@@ -93,32 +92,51 @@ $(document).ready()
 
                     let button = document.createElement('button');
                     button.className = 'btn btn-primary';
-                    button.id =  `${materia.id_aula}`;
+                    button.id = `${materia.id_aula}`;
                     button.style.fontFamily = 'Capriola, sans-serif';
                     button.style.margin = '8px';
                     button.type = 'button';
                     button.innerText = 'Cancelar Agendamento';
-                    button.addEventListener('click', function(){
-                        let i=0, j=0, z=0;
 
-                        while(usuarioCorrente.aulas_agendadas[i].id_aula != this.id){
-                            i++;
+                    button.addEventListener('click', function(){
+
+                        let vet_usuarios = usuariosJSON.usuarios;
+                        var i, j, z;
+
+                        // procurar aluno e professor no db_usuarios vai percorrer todo o db log(n)
+                        for(i = 0 ; i < vet_usuarios.length ; i++){
+                            
+                            let vet_aulas = vet_usuarios[i].aulas_agendadas;
+
+                            for(j = 0 ; j < vet_aulas.length ; j++){
+
+                                if(vet_aulas[j].id_aula == this.id){                                                                        
+                                    vet_aulas.splice(j , 1);
+                                }
+
+                            }
+
+                            vet_usuarios[i].aulas_agendadas = vet_aulas;
                         }
-                        while(usuarioCorrente.id_usuario != usuariosJSON.usuarios[j].id_usuario){
-                            j++;
+
+                        usuariosJSON.usuarios = vet_usuarios;
+
+                        var stp = false;
+
+                        // atualizar usuario corrente pior caso -> log(n)
+                        for (z = 0 ; z < vet_usuarios.length && stp == false; z++){
+
+                            if(usuarioCorrente.id_usuario == vet_usuarios[z].id_usuario){
+                                usuarioCorrente.aulas_agendadas = vet_usuarios[z].aulas_agendadas;
+                                stp = true;
+                            }
+
                         }
-                        console.log(usuariosJSON.usuarios[z].aulas_agendadas);
-                        while(this.id != usuariosJSON.usuarios[j].aulas_agendadas[z].id_aula){
-                            z++;
-                        }
-                        usuarioCorrente.aulas_agendadas.splice(i, 1);
-                        //console.log(usuariosJSON.usuarios[j].aulas_agendadas);
-                        usuariosJSON.usuarios[j].aulas_agendadas.splice(z, 1);
-                        //usuariosJSON.usuarios[j].aulas_agendadas = usuarioCorrente.aulas_agendadas;
                         
                         sessionStorage.setItem('usuarioCorrente', JSON.stringify(usuarioCorrente));
-                        localStorage.setItem('db_usuarios', JSON.stringify(usuariosJSON));
+                        localStorage.setItem('db_usuarios', JSON.stringify(usuariosJSON));                        
                         location.reload();
+                        alert('AULA CANCELADA');
 
                     });
 
