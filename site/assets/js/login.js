@@ -209,11 +209,13 @@ $(document).ready()
                     "id_mensagem" : "",
                     "id_remetente" : "",
                     "id_destinatario" : "",
+                    "nome_remetente" : "",
                     "assunto" : "", 
                     "texto" : "",
                     "arquivo" : "",
                     "data" : new Date(),
-                    "lida" : false,
+                    "enviada" : false,
+                    "recebida" : false,
                 */
             ]
         };
