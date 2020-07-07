@@ -221,6 +221,7 @@ $(document).ready()
     /**
      * Esconde a opção de pesquisar na barra de navegação 
      * caso o usuario logado seja um professor.
+     * @author Rayane Paiva Reginaldo
      */
     function hideSearch() {
 

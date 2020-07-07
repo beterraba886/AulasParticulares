@@ -1,3 +1,6 @@
+/**
+ * @author Rayane Paiva Reginaldo
+ */
 $(document).ready()
 {
     let usuarioLogado = JSON.parse(sessionStorage.getItem('usuarioCorrente'));    
@@ -12,6 +15,7 @@ $(document).ready()
 
     /**
      * Carrega os dados do usuario logado na pagina de perfil.
+     * @author Rayane Paiva Reginaldo
      */
     function carregar_dados_usuario() {        
 
@@ -55,6 +59,7 @@ $(document).ready()
 
     /**
      * Atualiza dados do usuario logado no localStorage e no sessionStorage
+     * @author Rayane Paiva Reginaldo
      */
     function atualizar_dados() {
 
@@ -99,6 +104,7 @@ $(document).ready()
     /**
      * Esconde a opção de pesquisar na barra de navegação 
      * caso o usuario logado seja um professor.
+     * @author Rayane Paiva Reginaldo
      */
     function hideSearch(){
 

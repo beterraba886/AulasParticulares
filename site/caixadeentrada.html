@@ -11,63 +11,48 @@
     <link rel="stylesheet" href="assets/css/formulario-contato.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.1.1/aos.css">    
     <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/cards.css"> 
 </head>
 
 <body>
     <header class="text-center" style="background-color: rgb(255,255,255);padding: 8px 8px;">
-        <strong class="text-center" style="margin: 0px;padding: 0px;padding-left: 0px;background-size: auto;font-size: 20px;font-family: Capriola, sans-serif;color: #000000;">MENSAGENS</strong>
+        <strong class="text-center" style="margin: 0px;padding: 0px;padding-left: 0px;background-size: auto;font-size: 20px;font-family: Capriola, sans-serif;color: #000000;">CAIXA DE ENTRADA</strong>
     </header>
-    
-    <br>
 
-    <main style="width: 100%;height: 100%;padding: 10px 10px;">
+    <main id="cx_msg" style="width: 100%;height: 100%;padding: 10px 10px;" >
 
+        <!--
         <div class="d-flex justify-content-center" style="background-color: #ffffff;padding: 10px 10px;">
 
-            <div class="card" style="border-radius: 15px;">
+            <div class="card">
     
                 <div class="card-body">
     
-                    <a href="caixadeentrada.html" id="cx_entrada" style="color: #00b2f7;">Caixa de Entrada</a>
-                
+                    <h4 class="card-title" id="nome_remetente" style="font-family: Capriola, sans-serif;">Remetente</h4>
+    
+                    <h6 class="text-muted card-subtitle mb-2" id="assunto" style="font-family: Capriola, sans-serif;">
+                        Assunto
+                    </h6>
+    
+                    <h6 class="text-muted card-subtitle mb-2" id="data_hora" style="font-family: Capriola, sans-serif;">
+                        Dia: 00/00/2020 - Hora: 00:00
+                    </h6>
+    
+                    <p class="card-text" id="texto_mensagem" style="font-family: Capriola, sans-serif;">
+                        Nullam id dolor id nibh ultricies vehicula ut id elit. 
+                        Cras justo odio, dapibus ac facilisis in, egestas eget quam. 
+                        Donec id elit non mi porta gravida at eget metus.
+                    </p>
+
+                    <a href="" id="apagar_msg">apagar</a>
+
                 </div>
             </div>
         </div>
+        -->
 
-        <!--<hr style="background-color: #00b2f7;">-->
+    </main>   
 
-    </main>
-
-    <br>
-    
-    <div class="contact-clean" style="background-color: rgb(255,255,255);">
-    
-        <form class="border rounded" method="post">
-            
-            <h2 class="text-center" style="font-family: Capriola, sans-serif;">Contato</h2>
-
-            <div class="form-group">
-                <input class="border rounded form-control" id="assunto" type="text" name="assunto" placeholder="Assunto" style="font-family: Capriola, sans-serif;">
-            </div>
-            
-            <div class="form-group" style="font-family: Capriola, sans-serif;">                
-                <select class=" border rounded form-control" id="professor" required="" style="background-color: rgb(255, 255, 255); color: #000000;">
-                    <optgroup label="Contatos" id="opc_professor">
-                        
-                    </optgroup>
-                </select>                
-            </div>
-
-            <div class="form-group">
-                <textarea class="border rounded form-control" id="text_area" name="message" placeholder="Messagem" rows="14" style="font-family: Capriola, sans-serif;"></textarea>
-            </div>
-
-            <div class="form-group">                
-                <input class="border rounded" id="inputFile" type="file" multiple="" style="font-family: Capriola, sans-serif;">
-                <button class="btn btn-primary btn-lg border rounded" id="btn_send" type="button" style="font-family: Capriola, sans-serif;">Enviar</button>
-            </div>
-        </form>
-    </div>
 
     <br>
     <br>
@@ -93,7 +78,7 @@
     </nav>
 
     <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/mensagens.js"></script>
+    <script src="assets/js/caixadeentrada.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/bs-init.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.1.1/aos.js"></script>
